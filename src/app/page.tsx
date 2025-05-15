@@ -17,7 +17,7 @@ export default function Home() {
             href="https://members.eyp.org/events/7th-summer-training-camp-of-eyp-azerbaijan"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary bg-white text-[#2E7D32] hover:bg-gray-100"
+            className="inline-block px-8 py-3 bg-gradient-to-r from-[#E91E63] to-[#C2185B] text-white font-semibold rounded-lg hover:from-[#C2185B] hover:to-[#E91E63] transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             Apply Now
           </a>
