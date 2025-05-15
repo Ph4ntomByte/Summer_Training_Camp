@@ -3,7 +3,7 @@ import Image from 'next/image';
 const scheduleData = [
   {
     day: 'Day 1',
-    date: 'July 15, 2024',
+    date: 'July 15, 2025',
     activities: [
       {
         time: '09:00 - 10:30',
@@ -27,7 +27,7 @@ const scheduleData = [
   },
   {
     day: 'Day 2',
-    date: 'July 16, 2024',
+    date: 'July 16, 2025',
     activities: [
       {
         time: '09:00 - 10:30',
