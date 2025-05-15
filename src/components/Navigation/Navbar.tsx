@@ -25,13 +25,15 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/eyp-logo.png"
+              src="/images/azerbaijan-hero.jpg"
               alt="EYP Logo"
-              width={40}
-              height={40}
+              width={120}
+              height={120}
               className="mr-2"
             />
-            <span className="font-bold text-xl">EYP Summer Camp</span>
+            <span className="font-bold text-xl bg-gradient-to-r from-[#2E7D32] to-[#E91E63] bg-clip-text text-transparent">
+              EYP Summer Camp
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -40,7 +42,7 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-gray-600 hover:text-blue-600 transition-colors"
+                className="text-gray-600 hover:text-[#2E7D32] transition-colors"
               >
                 {item.label}
               </Link>
@@ -54,7 +56,7 @@ export function Navbar() {
             aria-label="Toggle menu"
           >
             <svg
-              className="w-6 h-6"
+              className="w-6 h-6 text-[#2E7D32]"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -79,7 +81,7 @@ export function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block px-3 py-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md"
+                  className="block px-3 py-2 text-gray-600 hover:text-[#2E7D32] hover:bg-gray-50 rounded-md"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}

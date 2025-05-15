@@ -14,7 +14,7 @@ export default function Home() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#2E7D32]/80 to-[#E91E63]/80" />
         </div>
         
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4">
@@ -24,12 +24,14 @@ export default function Home() {
           <p className="text-xl md:text-2xl mb-8 max-w-2xl">
             Join us for an unforgettable experience in Azerbaijan
           </p>
-          <Link
-            href="/registration"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-colors"
+          <a
+            href="https://members.eyp.org/events/7th-summer-training-camp-of-eyp-azerbaijan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
           >
             Apply Now
-          </Link>
+          </a>
         </div>
       </section>
 
@@ -38,29 +40,29 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Link href="/about" className="group">
-              <div className="p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-600">About the Camp</h3>
+              <div className="p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow border-2 border-transparent hover:border-[#2E7D32]">
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-[#2E7D32]">About the Camp</h3>
                 <p className="text-gray-600">Learn about our mission and history</p>
               </div>
             </Link>
             
             <Link href="/program" className="group">
-              <div className="p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-600">Program & Schedule</h3>
+              <div className="p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow border-2 border-transparent hover:border-[#E91E63]">
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-[#E91E63]">Program & Schedule</h3>
                 <p className="text-gray-600">View daily activities and workshops</p>
               </div>
             </Link>
             
             <Link href="/facilitators" className="group">
-              <div className="p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-600">Facilitators</h3>
+              <div className="p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow border-2 border-transparent hover:border-[#2E7D32]">
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-[#2E7D32]">Facilitators</h3>
                 <p className="text-gray-600">Meet our expert speakers</p>
               </div>
             </Link>
             
             <Link href="/venue" className="group">
-              <div className="p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-600">Venue & Logistics</h3>
+              <div className="p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow border-2 border-transparent hover:border-[#E91E63]">
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-[#E91E63]">Venue & Logistics</h3>
                 <p className="text-gray-600">Travel and accommodation details</p>
               </div>
             </Link>
