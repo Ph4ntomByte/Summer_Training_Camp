@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import CountdownTimer from '@/components/CountdownTimer';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32]">
       {/* Hero Section */}
-      <section className="relative h-[60vh]">
+      <section className="relative h-[60vh] pt-10">
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4">
           <div className="relative w-48 h-48 md:w-64 md:h-64 mb-8">
             <Image
@@ -16,17 +17,18 @@ export default function Home() {
               priority
             />
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-pink-200 to-white bg-clip-text text-transparent">
             EYP Summer Training Camp
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl">
+          <p className="text-xl md:text-2xl mb-8 max-w-2xl text-white/90 font-light">
             Join us for an unforgettable experience in Azerbaijan
           </p>
+          <CountdownTimer />
           <a
             href="https://members.eyp.org/events/7th-summer-training-camp-of-eyp-azerbaijan"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-3 bg-gradient-to-r from-[#E91E63] to-[#C2185B] text-white font-semibold rounded-lg hover:from-[#C2185B] hover:to-[#E91E63] transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="inline-block px-8 py-3 bg-gradient-to-r from-[#E91E63] to-[#C2185B] text-white font-semibold rounded-lg transition-all duration-300 shadow-lg"
           >
             Apply Now
           </a>
