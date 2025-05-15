@@ -54,14 +54,6 @@ const scheduleData = [
 export default function ProgramPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32]">
-      {/* Hero Section */}
-      <section className="relative h-[40vh]">
-        <div className="relative z-10 flex items-center justify-center h-full">
-          <h1 className="text-4xl md:text-5xl font-bold text-white text-center">
-            Program & Schedule
-          </h1>
-        </div>
-      </section>
 
       {/* Schedule Section */}
       <section className="py-16">
