@@ -1,15 +1,10 @@
+import React from 'react';
 import Image from 'next/image';
 
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32]">
-      {/* Hero Section */}
-      <section className="relative h-[40vh] flex items-center justify-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-white text-center">
-          About the Camp
-        </h1>
-      </section>
-
+      
       {/* Mission Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
