@@ -7,6 +7,15 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[60vh]">
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4">
+          <div className="relative w-48 h-48 md:w-64 md:h-64 mb-8">
+            <Image
+              src="/images/lotus-logo.png"
+              alt="EYP Logo"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             EYP Summer Training Camp
           </h1>
