@@ -5,18 +5,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-screen">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/azerbaijan-hero.jpg"
-            alt="Azerbaijan Landscape"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#2E7D32]/80 to-[#E91E63]/80" />
-        </div>
-        
+      <section className="relative h-[60vh] bg-gradient-to-r from-[#2E7D32] to-[#E91E63]">
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             EYP Summer Training Camp
@@ -28,7 +17,7 @@ export default function Home() {
             href="https://members.eyp.org/events/7th-summer-training-camp-of-eyp-azerbaijan"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary"
+            className="btn-primary bg-white text-[#2E7D32] hover:bg-gray-100"
           >
             Apply Now
           </a>
@@ -36,9 +25,9 @@ export default function Home() {
       </section>
 
       {/* Quick Links Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             <Link href="/about" className="group">
               <div className="p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow border-2 border-transparent hover:border-[#2E7D32]">
                 <h3 className="text-xl font-semibold mb-2 group-hover:text-[#2E7D32]">About the Camp</h3>
