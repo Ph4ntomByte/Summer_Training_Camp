@@ -25,11 +25,12 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/azerbaijan-hero.jpg"
+              src="/images/lotus-logo.png"
               alt="EYP Logo"
-              width={120}
-              height={120}
+              width={40}
+              height={40}
               className="mr-2"
+              priority
             />
             <span className="font-bold text-xl bg-gradient-to-r from-[#2E7D32] to-[#E91E63] bg-clip-text text-transparent">
               EYP Summer Camp
