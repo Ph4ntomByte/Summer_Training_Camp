@@ -37,9 +37,6 @@ export default function Navbar() {
               <Link href="/program" className="text-white hover:text-white/80 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                 Program
               </Link>
-              <Link href="/facilitators" className="text-white hover:text-white/80 px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                Facilitators
-              </Link>
               <Link href="/venue" className="text-white hover:text-white/80 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                 Venue
               </Link>
@@ -79,9 +76,6 @@ export default function Navbar() {
             </Link>
             <Link href="/program" className="text-white hover:text-white/80 block px-3 py-2 rounded-md text-base font-medium transition-colors">
               Program
-            </Link>
-            <Link href="/facilitators" className="text-white hover:text-white/80 block px-3 py-2 rounded-md text-base font-medium transition-colors">
-              Facilitators
             </Link>
             <Link href="/venue" className="text-white hover:text-white/80 block px-3 py-2 rounded-md text-base font-medium transition-colors">
               Venue
