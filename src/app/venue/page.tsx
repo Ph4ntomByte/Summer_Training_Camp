@@ -8,7 +8,7 @@ export default function VenuePage() {
           <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg border-2 border-white/20 text-center">
             <h1 className="text-3xl font-bold mb-6 text-white">Venue Information</h1>
             <p className="text-white/90 text-lg mb-8">
-              The venue for the EYP Summer Training Camp 2024 is currently being finalized.
+              The venue for the EYP Summer Training Camp 2025 is currently being finalized.
               We will announce the location and accommodation details soon.
             </p>
             <p className="text-white/90 text-lg">
