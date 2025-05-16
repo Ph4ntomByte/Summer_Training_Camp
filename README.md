@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<img src="public/images/lotus-logo.png" alt="Logo" width="200"  />
 
-## Getting Started
+Welcome to the **EYP Summer Training Camp** website repository! 🎉 This project is your digital gateway to the 7th annual European Youth Parliament Summer Training Camp in beautiful Baku, Azerbaijan.
 
-First, run the development server:
+---
+
+## Features
+
+- **Landing Page** with a vibrant hero image and “Apply Now” call-to-action  
+- **About** section: mission, history of EYP, and why we chose Azerbaijan  
+- **Program & Schedule**: daily timetable, workshops, and keynote sessions  
+- **Speakers**: meet our facilitators’ lineup  
+- **FAQ**: visa info, language tips, dress code, and packing list  
+
+---
+
+## Upcoming 
+
+- **Venue & Logistics**: maps, travel tips, and accommodation guides  
+- **Registration**: online application form, deadlines, and payment details  
+- **News & Blog**: updates, stories, and highlights  
+- **Gallery**: snapshots and videos from past camps  
+
+---
+
+## 🎯 Getting Started
+
+### 1. Clone the Repo
+
+```bash
+git clone https://github.com/Ph4ntomByte/eyp-summer-camp-website.git
+cd eyp-summer-camp-website
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Run in Development Mode
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the magic! ✨
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🤝 Contributing
 
-## Learn More
+We welcome your input! Feel free to open an issue or PR. Just remember to:
 
-To learn more about Next.js, take a look at the following resources:
+1. Fork the repo  
+2. Create a branch  
+3. Make your changes  
+4. Submit a PR for review  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📝 License
 
-## Deploy on Vercel
+This project is released under the [MIT License](LICENSE).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Thank you for being part of the EYP Summer Camp adventure! 💚🌸  
