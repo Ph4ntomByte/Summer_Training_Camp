@@ -40,6 +40,9 @@ export default function Navbar() {
               <Link href="/venue" className="text-white hover:text-white/80 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                 Venue
               </Link>
+              <Link href="/faq" className="text-white hover:text-white/80 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                FAQ
+              </Link>
             </div>
           </div>
 
@@ -79,6 +82,9 @@ export default function Navbar() {
             </Link>
             <Link href="/venue" className="text-white hover:text-white/80 block px-3 py-2 rounded-md text-base font-medium transition-colors">
               Venue
+            </Link>
+            <Link href="/faq" className="text-white hover:text-white/80 block px-3 py-2 rounded-md text-base font-medium transition-colors">
+              Faq
             </Link>
           </div>
         </div>
