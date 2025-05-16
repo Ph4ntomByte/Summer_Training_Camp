@@ -38,14 +38,15 @@ export default function Home() {
       {/* Quick Links Section */}
       <section className="py-12">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+
             <Link href="/about" className="group h-full">
               <div className="p-6 bg-white/10 backdrop-blur-sm rounded-lg hover:shadow-lg transition-shadow border-2 border-transparent hover:border-white h-full flex flex-col">
                 <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-white">About the Camp</h3>
                 <p className="text-white/80 flex-grow">Learn about our mission and history</p>
               </div>
             </Link>
-            
+
             <Link href="/program" className="group h-full">
               <div className="p-6 bg-white/10 backdrop-blur-sm rounded-lg hover:shadow-lg transition-shadow border-2 border-transparent hover:border-white h-full flex flex-col">
                 <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-white">Program & Schedule</h3>
@@ -59,6 +60,13 @@ export default function Home() {
                 <p className="text-white/80 flex-grow">Travel and accommodation details</p>
               </div>
             </Link>
+            <Link href="/faq" className="group h-full">
+              <div className="p-6 bg-white/10 backdrop-blur-sm rounded-lg hover:shadow-lg transition-shadow border-2 border-transparent hover:border-white h-full flex flex-col">
+                <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-white">FAQ</h3>
+                <p className="text-white/80 flex-grow">Frequently Asked Questions</p>
+              </div>
+            </Link>
+
           </div>
         </div>
       </section>
