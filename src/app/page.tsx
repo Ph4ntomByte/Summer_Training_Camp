@@ -8,15 +8,45 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[60vh] pt-10">
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4">
-          <div className="relative w-48 h-48 md:w-64 md:h-64 mb-8">
-            <Image
-              src="/images/lotus-logo.png"
-              alt="EYP Logo"
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
+          <div className="mb-8">
+
+            {/* Mobile */}
+            <div className="block sm:hidden">
+              <Image
+                src="/images/lotus-logo.png"
+                alt="EYP Logo"
+                width={115}
+                height={115}
+                className="object-contain"
+                priority
+              />
+            </div>
+
+            {/* Tablet */}
+            <div className="hidden sm:block md:hidden">
+              <Image
+                src="/images/lotus-logo.png"
+                alt="EYP Logo"
+                width={140}
+                height={140}
+                className="object-contain"
+                priority
+              />
+            </div>
+
+            {/* Desktop */}
+            <div className="hidden md:block">
+              <Image
+                src="/images/lotus-logo.png"
+                alt="EYP Logo"
+                width={160}
+                height={160}
+                className="object-contain"
+                priority
+              />
+            </div>
+
+        </div>
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-pink-200 to-white bg-clip-text text-transparent">
             EYP Summer Training Camp
           </h1>
