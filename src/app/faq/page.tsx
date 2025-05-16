@@ -12,12 +12,11 @@ export default function FAQPage() {
             <section className="mb-12">
               <h2 className="text-2xl font-semibold mb-4 text-white">Dress Code</h2>
               <div className="space-y-4 text-white/90">
-                <p>During the EYP Summer Training Camp, we maintain a professional yet comfortable dress code:</p>
+                <p>At the Camp, we do not have Dress Code but we recoomend to take with you:</p>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>Business casual attire for formal sessions and committee work</li>
                   <li>Comfortable casual wear for evening activities and free time</li>
                   <li>Appropriate footwear for both indoor and outdoor activities</li>
-                  <li>National costumes are welcome during cultural events</li>
+                  <li>Warm clothes since it might get cold at nights</li>
                 </ul>
               </div>
             </section>
@@ -30,7 +29,6 @@ export default function FAQPage() {
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Valid ID and travel documents</li>
                   <li>Comfortable clothing for various activities</li>
-                  <li>Toiletries and personal items</li>
                   <li>Notebook and writing materials</li>
                   <li>Laptop or tablet (if available)</li>
                   <li>Power adapter and chargers</li>
@@ -48,10 +46,11 @@ export default function FAQPage() {
                 <p>The application process for the EYP Summer Training Camp consists of the following steps:</p>
                 <ol className="list-decimal pl-6 space-y-2">
                   <li>Complete the online application form</li>
-                  <li>Submit required documents (CV, motivation letter)</li>
+                  <li>Receive acceptance email</li>
+                  <li>Confrim participation</li>
                   <li>Pay the participation fee</li>
-                  <li>Receive confirmation email</li>
-                  <li>Complete pre-camp assignments</li>
+                  <li>Sign and send Code of Conduct</li>
+                  <li>Complete registration form and medical sheet</li>
                 </ol>
                 <p className="mt-4">Application deadlines and specific requirements will be announced soon.</p>
               </div>
@@ -61,15 +60,11 @@ export default function FAQPage() {
             <section className="mb-12">
               <h2 className="text-2xl font-semibold mb-4 text-white">What to Expect</h2>
               <div className="space-y-4 text-white/90">
-                <p>The EYP Summer Training Camp offers a comprehensive program including:</p>
+                <p>The EYP Summer Training Camp offers a comprehensive Trainings program including:</p>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>Workshops on European politics and current affairs</li>
-                  <li>Skills development sessions (public speaking, negotiation, leadership)</li>
-                  <li>Committee work and resolution writing</li>
-                  <li>Cultural exchange activities</li>
-                  <li>Networking opportunities with EYP alumni and professionals</li>
-                  <li>Social events and team-building activities</li>
-                  <li>Field trips and cultural visits</li>
+                  <li>Trainings on becoming official for each postion (Chairperson, Organiser, Media Team Member)</li>
+                  <li>Workshops on skills development (public speaking, negotiation, leadership)</li>
+                  <li>Interesting team-building games </li>
                 </ul>
               </div>
             </section>
@@ -81,8 +76,7 @@ export default function FAQPage() {
                 <p>Important notes:</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Accommodation and meals are included in the participation fee</li>
-                  <li>Travel arrangements should be made independently</li>
-                  <li>Insurance coverage is mandatory</li>
+                  <li>Travel information will be provided soon</li>
                   <li>Special dietary requirements can be accommodated upon request</li>
                   <li>Emergency contact information will be provided before the camp</li>
                 </ul>
