@@ -13,7 +13,7 @@ export default function AboutPage() {
               The European Youth Parliament Summer Training Camp aims to empower young leaders
               through debate, cultural exchange, and hands-on learning experiences. We believe
               in fostering critical thinking, leadership skills, and international understanding
-              among Europe's youth.
+              among Europe&apos;s youth.
             </p>
           </div>
         </div>
@@ -51,7 +51,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg border-2 border-white/20 hover:border-white/40 transition-all">
-              <h3 className="text-xl font-semibold mb-4 text-white">International Network</h3>
+              <h3 className="text-xl font-semibold mb-4 text-white">International Ne`two`rk</h3>
               <p className="text-white/90">
                 Connect with young leaders from across Europe and build lasting
                 professional relationships.
