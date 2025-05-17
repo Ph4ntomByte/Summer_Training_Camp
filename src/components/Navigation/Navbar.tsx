@@ -73,6 +73,7 @@ export default function Navbar() {
                 ) : (
                   <svg className="block h-6 w-6"/>
                 )}
+                <span className="ml-2 text-sm font-medium">Menu</span>
               </button>
             </div>
           </div>
