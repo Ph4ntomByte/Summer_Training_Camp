@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#2E7D32]`}>
+      <body className={`${inter.className} bg-[#2E7D32] overscroll-none`}>
         <Navbar />
         <div className="pt-16">
           {children}
