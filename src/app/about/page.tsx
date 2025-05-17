@@ -1,5 +1,5 @@
 import React from 'react'
-import {SectionHeading} from '@/components/SectionHeading/SectionHeading'
+import { SectionHeading } from '@/components/SectionHeading/SectionHeading'
 
 export default function AboutPage() {
   return (
@@ -9,7 +9,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <SectionHeading>EYP in General</SectionHeading>
           <p className="text-lg max-w-3xl mx-auto">
-            The European Youth Parliament (EYP) is a pan-European network of motivated young people that brings together youth across Europe to discuss political, cultural, and social topics. Founded in 1987, EYP has empowered thousands of young leaders to exchange ideas, develop critical thinking, and foster intercultural understanding.
+          The European Youth Parliament is one of Europe&apos;s largest youth platforms for civic education, intercultural encounters, and the exchange of ideas – run by young people, for young people. Our mission is to inspire and empower a young generation of informed, open-minded, responsible, and active citizens that shape society and drive impact. 
           </p>
         </div>
       </section>
@@ -39,6 +39,16 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Camp History */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <SectionHeading>Camp History</SectionHeading>
+          <p className="text-lg max-w-3xl mx-auto">
+            The 1st Summmer Training Camp was organised in 2017 in to cultivate the culture of trainings in EYP Azerbaijan. The event brought together active alumni of EYP Azerbaijan and EYPers from all around the Europe. Since that EYP Azerbaijan organised Summer Camps each year except 2020. This year we continue EYP Azerbaijan tradition by bringing to life 7th Summer Training Camp.
+          </p>
+        </div>
+      </section>
+
       {/* Our Journey Timeline */}
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -49,9 +59,7 @@ export default function AboutPage() {
                 { year: '1987', event: 'First session in Berlin' },
                 { year: '2000', event: '500 participants milestone' },
                 { year: '2011', event: 'Azerbaijan got recognized as National Committee' },
-                { year: '2017', event: 'Azerbaijan hosts first Summer tr' },
-                { year: '2023', event: 'Youth Parliament workshops' },
-                { year: '2024', event: 'National committee formation' },
+                { year: '2017', event: 'Azerbaijan hosts 1st Summer training Camp' },
                 { year: '2025', event: '7th Summer Training Camp in Baku' },
               ].map((item, idx) => (
                 <div key={idx} className="flex flex-col items-center text-center min-w-[200px]">
