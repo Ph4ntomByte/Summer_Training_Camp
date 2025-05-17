@@ -17,8 +17,8 @@ export default function Navbar() {
     { href: '/faq', label: 'FAQ' },
   ];
   useEffect(() => {
-    window.scroll(0, 0);
-}, [path]);
+    setIsOpen(false)
+  }, [path])
 
   return (
       <nav className="fixed w-full z-50 bg-[#2E7D32] shadow-lg">
@@ -78,7 +78,7 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-
+        
         {/* Mobile menu */}
         {isOpen && (
           <div className="md:hidden bg-[#2E7D32]">
