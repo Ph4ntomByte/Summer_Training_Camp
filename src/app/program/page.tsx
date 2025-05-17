@@ -1,53 +1,64 @@
 const scheduleData = [
   {
-    day: 'Day 1',
-    date: 'July 15, 2025',
+    day: 'Day 0 – CJO Day',
+    date: 'July 11, 2025 (GMT+4)',
     activities: [
-      {
-        time: '09:00 - 10:30',
-        title: 'Opening Ceremony',
-        description: 'Welcome speeches and introduction to the camp',
-        location: 'Main Hall'
-      },
-      {
-        time: '11:00 - 12:30',
-        title: 'Leadership Workshop',
-        description: 'Introduction to leadership styles and team dynamics',
-        location: 'Workshop Room A'
-      },
-      {
-        time: '14:00 - 15:30',
-        title: 'Debate Training',
-        description: 'Basic debate techniques and parliamentary procedure',
-        location: 'Conference Room'
-      }
-    ]
+      { time: '11:00–12:00', title: 'Officials Arrival & General TB', description: 'Welcome and overview of team‐building exercises', location: 'Globus centre' },
+      { time: '12:00–13:30', title: 'Officials Training I',           description: 'N/A', location: 'N/A' },
+      { time: '13:30–14:00', title: 'Coffee break',                   description: 'Refreshments served', location: 'Cafeteria' },
+      { time: '14:00–15:00', title: 'Officials Training II',          description: 'N/A', location: 'N/A' },
+      { time: '15:00–16:00', title: 'Lunch break',                    description: 'Buffet lunch provided', location: 'Dining Area' },
+      { time: '16:00–17:30', title: 'Officials Training III',         description: 'N/A', location: 'N/A' },
+      { time: '17:30–18:00', title: 'Coffee break',                   description: 'Afternoon tea and snacks', location: 'Cafeteria' },
+      { time: '18:00–19:00', title: 'Officials Training IV',          description: 'N/A', location: 'N/A' },
+      { time: '19:00',       title: 'Officials Dinner',               description: 'Formal dinner', location: 'N/A' },
+    ],
   },
   {
-    day: 'Day 2',
-    date: 'July 16, 2025',
+    day: 'Day 1 – Teambuilding Day',
+    date: 'July 12, 2025 (GMT+4)',
     activities: [
-      {
-        time: '09:00 - 10:30',
-        title: 'European Politics',
-        description: 'Overview of current European political landscape',
-        location: 'Main Hall'
-      },
-      {
-        time: '11:00 - 12:30',
-        title: 'Public Speaking',
-        description: 'Techniques for effective public speaking',
-        location: 'Workshop Room B'
-      },
-      {
-        time: '14:00 - 15:30',
-        title: 'Cultural Exchange',
-        description: 'Interactive session on European cultural diversity',
-        location: 'Conference Room'
-      }
-    ]
-  }
-];
+      { time: '07:30–08:00', title: 'Morning activity',             description: 'Sunrise yoga and ice-breakers', location: 'Garden Area' },
+      { time: '10:00–13:00', title: 'Trip to the venue',            description: 'Guided site tour', location: 'Off-site Venue' },
+      { time: '13:00–14:00', title: 'General Teambuilding',         description: 'Group challenges and games', location: 'Outdoor Field' },
+      { time: '14:00–15:00', title: 'Lunch break',                  description: 'Picnic-style lunch', location: 'Outdoor Dining' },
+      { time: '15:00–16:30', title: 'Training I',                   description: 'N/A', location: 'N/A' },
+      { time: '16:30–17:00', title: 'Coffee break',                 description: 'Afternoon refreshments', location: 'Cafeteria' },
+      { time: '17:00–18:30', title: 'Training II',                  description: 'N/A', location: 'N/A' },
+      { time: '18:30–19:30', title: 'Evening activity',             description: 'Campfire & storytelling', location: 'Campfire Circle' },
+      { time: '19:30–20:30', title: 'Dinner',                       description: 'Buffet dinner', location: 'Dining Hall' },
+      { time: '20:30–22:30', title: 'Board games night',            description: 'Casual games', location: 'Common Room' },
+    ],
+  },
+  {
+    day: 'Day 2 – Training Day',
+    date: 'July 13, 2025 (GMT+4)',
+    activities: [
+      { time: '08:00–08:30', title: 'Morning activity', description: 'Brain-teasers and warm-ups', location: 'Workshop Room A' },
+      { time: '08:00–09:00', title: 'Breakfast',                  description: 'Continental breakfast', location: 'Dining Area' },
+      { time: '09:00–10:30', title: 'Training III',               description: 'N/A', location: 'N/A' },
+      { time: '10:30–11:00', title: 'Coffee break',               description: 'Mid-morning snacks', location: 'Cafeteria' },
+      { time: '11:00–12:30', title: 'Training IV',                description: 'N/A', location: 'N/A' },
+      { time: '12:30–13:30', title: 'Lunch break',                description: 'Hot lunch service', location: 'Dining Area' },
+      { time: '13:30–14:30', title: 'Training V',                 description: 'N/A', location: 'N/A' },
+      { time: '14:30–15:00', title: 'Break',                      description: '', location: 'Media Lab' },
+      { time: '15:00–16:30', title: 'Training VI',                description: 'N/A', location: 'N/A' },
+      { time: '16:30–17:00', title: 'Coffee break',               description: 'Afternoon tea', location: 'Cafeteria' },
+      { time: '17:00–18:00', title: 'Training VII',               description: 'N/A', location: 'N/A' },
+      { time: '18:00–19:00', title: 'Roundtable',                 description: 'Panel discussion with experts', location: 'Main Hall' },
+      { time: '19:00–20:00', title: 'Dinner',                     description: 'Theme dinner night', location: 'Dining Hall' },
+      { time: '20:00–22:00', title: 'Closing ceremony',           description: 'Imagine and Farewell', location: 'Main Hall' },
+    ],
+  },
+  {
+    day: 'Day 3 – Training Day',
+    date: 'July 14, 2025 (GMT+4)',
+    activities: [
+      { time: '08:30–09:30', title: 'Breakfast',                   description: 'Final group breakfast', location: 'Dining Area' },
+      { time: '11:00–14:00', title: 'Trip to Baku',               description: 'Homecoming', location: 'Baku City Center' },
+    ],
+  },
+]
 
 export default function ProgramPage() {
   return (
