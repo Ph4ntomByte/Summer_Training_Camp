@@ -13,7 +13,7 @@ export default function Home() {
             {/* Mobile */}
             <div className="block sm:hidden">
               <Image
-                src="/images/lotus-logo.png"
+                src="/images/camp_logo_no_background.png"
                 alt="EYP Logo"
                 width={115}
                 height={115}
@@ -25,7 +25,7 @@ export default function Home() {
             {/* Tablet */}
             <div className="hidden sm:block md:hidden">
               <Image
-                src="/images/lotus-logo.png"
+                src="/images/camp_logo_no_background.png"
                 alt="EYP Logo"
                 width={140}
                 height={140}
@@ -37,7 +37,7 @@ export default function Home() {
             {/* Desktop */}
             <div className="hidden md:block">
               <Image
-                src="/images/lotus-logo.png"
+                src="/images/camp_logo_no_background.png"
                 alt="EYP Logo"
                 width={160}
                 height={160}
