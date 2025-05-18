@@ -1,7 +1,16 @@
 import React from 'react'
 import { SectionHeading } from '@/components/SectionHeading/SectionHeading'
+import Timeline, { TimelineItem } from '@/components/Timeline/Timeline'
+
 
 export default function AboutPage() {
+  const eypTimeline: TimelineItem[] = [
+    { year: '1987', title: 'First session in Fontainebleau, France'},
+    { year: '2000', title: '500 participants milestone'},
+    { year: '2011', title: 'Azerbaijan recognized as National Committee'},
+    { year: '2017', title: 'Hosts 1st Summer Training Camp'},
+    { year: '2025', title: '7th Summer Training Camp'},
+  ]
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32] text-white">
       {/* EYP in General */}
@@ -9,7 +18,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <SectionHeading>EYP in General</SectionHeading>
           <p className="text-lg max-w-3xl mx-auto">
-          The European Youth Parliament is one of Europe&apos;s largest youth platforms for civic education, intercultural encounters, and the exchange of ideas – run by young people, for young people. Our mission is to inspire and empower a young generation of informed, open-minded, responsible, and active citizens that shape society and drive impact. 
+            The European Youth Parliament is one of Europe&apos;s largest youth platforms for civic education, intercultural encounters, and the exchange of ideas – run by young people, for young people. Our mission is to inspire and empower a young generation of informed, open-minded, responsible, and active citizens that shape society and drive impact.
           </p>
         </div>
       </section>
@@ -52,28 +61,11 @@ export default function AboutPage() {
       {/* Our Journey Timeline */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <SectionHeading>Our Journey</SectionHeading>
-          <div className="relative overflow-x-auto">
-            <div className="flex items-center space-x-12 py-8">
-              {[
-                { year: '1987', event: 'First session in Berlin' },
-                { year: '2000', event: '500 participants milestone' },
-                { year: '2011', event: 'Azerbaijan got recognized as National Committee' },
-                { year: '2017', event: 'Azerbaijan hosts 1st Summer training Camp' },
-                { year: '2025', event: '7th Summer Training Camp in Baku' },
-              ].map((item, idx) => (
-                <div key={idx} className="flex flex-col items-center text-center min-w-[200px]">
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-2">
-                    <span className="text-sm font-semibold text-[#2E7D32]">{item.year}</span>
-                  </div>
-                  <p className="text-white/90">{item.event}</p>
-                </div>
-              ))}
-            </div>
-            <div className="absolute top-1/2 left-0 w-full h-1 bg-white/40 -translate-y-1/2"></div>
-          </div>
+          {/* <SectionHeading>Our Journey</SectionHeading> */}
+          <Timeline items={eypTimeline} />
         </div>
       </section>
+
     </main>
   )
 }
