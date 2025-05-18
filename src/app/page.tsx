@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32]">
       {/* Hero Section */}
-      <section className="relative h-[60vh] pt-10">
+      <section className="relative h-[60vh] pt-20 pb-16">
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4">
           <div className="mb-8">
 
@@ -53,7 +53,7 @@ export default function Home() {
           <p className="text-xl md:text-2xl mb-8 max-w-2xl text-white/90 font-light">
             Join us for an unforgettable experience in Azerbaijan
           </p>
-          <div className="mt-4 h-40"> {/* reserve 5rem height */}
+          <div className="flex-shrink-0 h-40 w-full max-w-xs">
             <CountdownTimer />
           </div>
           <a
