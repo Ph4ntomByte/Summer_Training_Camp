@@ -46,14 +46,16 @@ export default function Home() {
               />
             </div>
 
-        </div>
+          </div>
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-pink-200 to-white bg-clip-text text-transparent">
             EYP Summer Training Camp
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl text-white/90 font-light">
             Join us for an unforgettable experience in Azerbaijan
           </p>
-          <CountdownTimer />
+          <div className="mt-4 h-40"> {/* reserve 5rem height */}
+            <CountdownTimer />
+          </div>
           <a
             href="https://members.eyp.org/events/7th-summer-training-camp-of-eyp-azerbaijan"
             target="_blank"
@@ -83,7 +85,7 @@ export default function Home() {
                 <p className="text-white/80 flex-grow">View daily activities and workshops</p>
               </div>
             </Link>
-            
+
             <Link href="/venue" className="group h-full">
               <div className="p-6 bg-white/10 backdrop-blur-sm rounded-lg hover:shadow-lg transition-shadow border-2 border-transparent hover:border-white h-full flex flex-col">
                 <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-white">Venue & Logistics</h3>
