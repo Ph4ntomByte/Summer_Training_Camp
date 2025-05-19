@@ -5,11 +5,12 @@ import Timeline, { TimelineItem } from '@/components/Timeline/Timeline'
 
 export default function AboutPage() {
   const eypTimeline: TimelineItem[] = [
-    { year: '1987', title: 'First session in Fontainebleau, France'},
-    { year: '2000', title: '500 participants milestone'},
-    { year: '2011', title: 'Azerbaijan recognized as National Committee'},
-    { year: '2017', title: 'Hosts 1st Summer Training Camp'},
-    { year: '2025', title: '7th Summer Training Camp'},
+    { year: '1987', title: 'First session in Fontainebleau, France' },
+    { year: '2000', title: '500 participants milestone' },
+    { year: '2011', title: 'Azerbaijan recognized as National Committee' },
+    { year: '2017', title: 'Hosts 1st Summer Training Camp' },
+    { year: '2023', title: 'Azerbaiajn hosted International session' },
+    { year: '2025', title: '7th Summer Training Camp' },
   ]
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32] text-white">
@@ -61,8 +62,26 @@ export default function AboutPage() {
       {/* Our Journey Timeline */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          {/* <SectionHeading>Our Journey</SectionHeading> */}
           <Timeline items={eypTimeline} />
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4 text-white">Now It’s Your Turn</h2>
+          <p className="text-lg text-white/90 mb-6 max-w-2xl mx-auto">
+            Now it is your time to contribute to EYP <br/>
+            Join us at the next EYP Summer Training Camp in Azerbaijan!
+          </p>
+          <a
+            href="https://members.eyp.org/events/7th-summer-training-camp-of-eyp-azerbaijan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-8 py-3 bg-gradient-to-r from-[#E91E63] to-[#C2185B] text-white font-semibold rounded-lg transition-all duration-300 shadow-lg"
+          >
+            Apply Now
+          </a>
         </div>
       </section>
 
