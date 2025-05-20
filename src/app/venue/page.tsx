@@ -2,21 +2,17 @@ import React from 'react';
 
 export default function VenuePage() {
   return (
-    <main className="min-h-screen  bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32] text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="max-w-3xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg border-2 border-white/20 text-center">
-            <h1 className="text-3xl font-bold mb-6 text-white">Venue Information</h1>
-            <p className="text-white/90 text-lg mb-8">
-              The venue for the EYP Summer Training Camp 2025 is currently being finalized.
-              We will announce the location and accommodation details soon.
-            </p>
-            <p className="text-white/90 text-lg">
-              Please check back later for updates on the venue, travel arrangements, and accommodation options.
-            </p>
-          </div>
+    <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32] text-white">
+      {/* Hero / Intro */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl font-bold text-white mb-4">Venue &amp; Logistics</h1>
+          <p className="text-lg text-white/90 max-w-2xl mx-auto">
+            We’ll be picking you up from the airport and bringing you straight to our camp venue.  
+            Stay tuned for the exact pickup locations and schedule!
+          </p>
         </div>
-      </div>
+      </section>
     </main>
   );
-} 
+}
