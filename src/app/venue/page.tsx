@@ -47,6 +47,28 @@ export default function VenuePage() {
           </div>
         </div>
       </section>
+
+      {/* Venue Details */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <SectionHeading>Venue Details</SectionHeading>
+          <p className="text-lg text-white/90 max-w-3xl mx-auto mb-8 text-center">
+            Get a glimpse of the facilities where our camp will take place.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="rounded-lg overflow-hidden shadow-lg h-48 bg-white/20 flex items-center justify-center text-white/50">
+              Image 1 Placeholder
+            </div>
+            <div className="rounded-lg overflow-hidden shadow-lg h-48 bg-white/20 flex items-center justify-center text-white/50">
+              Image 2 Placeholder
+            </div>
+            <div className="rounded-lg overflow-hidden shadow-lg h-48 bg-white/20 flex items-center justify-center text-white/50">
+              Image 3 Placeholder
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
   );
 }
