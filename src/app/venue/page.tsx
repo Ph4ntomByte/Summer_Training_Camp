@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function VenuePage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen  bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32] text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto">
           <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg border-2 border-white/20 text-center">
