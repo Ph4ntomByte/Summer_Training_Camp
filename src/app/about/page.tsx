@@ -35,20 +35,32 @@ export default function AboutPage() {
               <p>Founded</p>
             </div>
             <div className="p-6 bg-white/20 rounded-lg text-center">
-              <p className="text-4xl font-bold text-[#10B981]"><CountUp end={5000} duration={2} /></p>
-              <p>Participants to Date</p>
+              <p className="text-4xl font-bold text-[#10B981]"><CountUp end={25000} duration={2} /></p>
+              <p>Participants annually</p>
             </div>
             <div className="p-6 bg-white/20 rounded-lg text-center">
               <p className="text-4xl font-bold text-[#EC4899]"><CountUp end={40} duration={2} /></p>
               <p>Countries Represented</p>
             </div>
             <div className="p-6 bg-white/20 rounded-lg text-center">
-              <p className="text-4xl font-bold text-[#F59E0B]"> <CountUp end={2000} duration={2} /></p>
-              <p>Sessions Held</p>
+              <p className="text-4xl font-bold text-[#F59E0B]"> <CountUp end={400} duration={2} /></p>
+              <p>Sessions annually</p>
             </div>
           </div>
         </div>
       </section>
+
+      {/* EYP Intro Video */}
+      <div className="mx-auto h-110 aspect-video">
+        <iframe
+          src="https://www.youtube.com/embed/3rAZD_fg4To"
+          title="EYP Being EYP"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="w-full h-full object-cover"
+        />
+      </div>
 
       {/* Camp History */}
       <section className="py-16">
@@ -72,7 +84,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4 text-white">Now It’s Your Turn</h2>
           <p className="text-lg text-white/90 mb-6 max-w-2xl mx-auto">
-            Now it is your time to contribute to EYP <br/>
+            Now it is your time to contribute to EYP <br />
             Join us at the next EYP Summer Training Camp in Azerbaijan!
           </p>
           <a
