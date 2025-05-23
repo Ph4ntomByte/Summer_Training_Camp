@@ -1,16 +1,41 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import CountdownTimer from '@/components/CountdownTimer';
+'use client'
+
+import { useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
+import { motion, useAnimation } from 'framer-motion'
+import Image from 'next/image'
+import Link from 'next/link'
+import CountdownTimer from '@/components/CountdownTimer'
 
 export default function Home() {
+  const controls = useAnimation()
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 })
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible')
+    }
+  }, [controls, inView])
+
+  const variants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }
+  }
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32]">
       {/* Hero Section */}
-      <section className="relative h-[60vh] pt-20 pb-16">
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4">
+      <section
+        ref={ref}
+        className="relative h-[60vh] pt-20 pb-16 overflow-hidden"
+      >
+        <motion.div
+          initial="hidden"
+          animate={controls}
+          variants={variants}
+          className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4"
+        >
           <div className="mb-8">
-
-            {/* Mobile */}
             <div className="block sm:hidden">
               <Image
                 src="/images/camp_logo_no_background.png"
@@ -21,8 +46,6 @@ export default function Home() {
                 priority
               />
             </div>
-
-            {/* Tablet */}
             <div className="hidden sm:block md:hidden">
               <Image
                 src="/images/camp_logo_no_background.png"
@@ -33,8 +56,6 @@ export default function Home() {
                 priority
               />
             </div>
-
-            {/* Desktop */}
             <div className="hidden md:block">
               <Image
                 src="/images/camp_logo_no_background.png"
@@ -45,8 +66,8 @@ export default function Home() {
                 priority
               />
             </div>
-
           </div>
+
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-pink-200 to-white bg-clip-text text-transparent">
             EYP Summer Training Camp
           </h1>
@@ -64,14 +85,13 @@ export default function Home() {
           >
             Apply Now
           </a>
-        </div>
+        </motion.div>
       </section>
 
       {/* Quick Links Section */}
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-
             <Link href="/about" className="group h-full">
               <div className="p-6 bg-white/10 backdrop-blur-sm rounded-lg hover:shadow-lg transition-shadow border-2 border-transparent hover:border-white h-full flex flex-col">
                 <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-white">About the Camp</h3>
@@ -93,23 +113,15 @@ export default function Home() {
               </div>
             </Link>
 
-            {/* <Link href="/past-camps" className="group h-full">
-              <div className="p-6 bg-white/10 backdrop-blur-sm rounded-lg hover:shadow-lg transition-shadow border-2 border-transparent hover:border-white h-full flex flex-col">
-                <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-white">Past Camps</h3>
-                <p className="text-white/80 flex-grow">Past Camps details</p>
-              </div>
-            </Link> */}
-            
             <Link href="/faq" className="group h-full">
               <div className="p-6 bg-white/10 backdrop-blur-sm rounded-lg hover:shadow-lg transition-shadow border-2 border-transparent hover:border-white h-full flex flex-col">
                 <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-white">FAQ</h3>
                 <p className="text-white/80 flex-grow">Frequently Asked Questions</p>
               </div>
             </Link>
-
           </div>
         </div>
       </section>
     </main>
-  );
+  )
 }
