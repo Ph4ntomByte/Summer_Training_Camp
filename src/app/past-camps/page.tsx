@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { SectionHeading } from '@/components/SectionHeading/SectionHeading'
-import Image from 'next/image'
+import Gallery from '@/components/Gallery/Gallery'
 
 interface PastCamp {
   year: number
@@ -14,7 +14,7 @@ const pastCamps: PastCamp[] = [
     year: 2017,
     location: 'Baku, Azerbaijan',
     media: [
-      { type: 'video', src: '/videos/camp-2017-highlights.mp4', alt: 'Highlights 2017' },
+      { type: 'video', src: 'https://www.youtube.com/embed/3rAZD_fg4To?si=yGFcaGxeu2KjM5Z6', alt: 'Highlights 2017' },
       { type: 'image', src: '/images/camp-2017-hero.jpg', alt: 'Opening Camp 2017' },
       { type: 'image', src: '/images/camp-2017-training.jpg', alt: 'Trainings 2017' },
     ],
@@ -82,58 +82,13 @@ export default function PastCampsPage() {
         <SectionHeading>Past Summer Training Camps</SectionHeading>
 
         {pastCamps.map((camp) => (
-          <section key={camp.year} className="space-y-4">
+          <section key={camp.year} className="space-y-6">
             <div className="flex flex-col md:flex-row md:justify-between items-center">
               <h2 className="text-3xl font-semibold">{camp.year}</h2>
               <p className="text-white/80">{camp.location}</p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-              {camp.media.slice(0, 4).map((item, idx) => {
-                if (!item.src) {
-                  return (
-                    <div
-                      key={idx}
-                      className="w-full h-40 bg-gray-700 animate-pulse rounded-lg"
-                    />
-                  )
-                }
-                if (item.type === 'video') {
-                  if (item.src.startsWith('http')) {
-                    return (
-                      <iframe
-                        key={idx}
-                        src={item.src}
-                        title={item.alt ?? `video-${idx}`}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        className="w-full h-40 object-cover rounded-lg"
-                      />
-                    )
-                  }
-                  return (
-                    <video
-                      key={idx}
-                      src={item.src}
-                      className="w-full h-40 object-cover rounded-lg"
-                      controls
-                      muted
-                      loop
-                    />
-                  )
-                }
-                return (
-                  <div key={idx} className="relative w-full h-40 rounded-lg overflow-hidden">
-                    <Image
-                      src={item.src}
-                      alt={item.alt ?? `image-${idx}`}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                )
-              })}
-            </div>
+            <Gallery items={camp.media.slice(0, 4)} />
           </section>
         ))}
       </div>
