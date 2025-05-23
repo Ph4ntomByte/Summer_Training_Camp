@@ -25,7 +25,7 @@ export default function Gallery({ items }: { items: MediaItem[] }) {
             {item.type === 'image' ? (
               <Image
                 src={item.src}
-                alt={item.alt || ''}
+                alt={item.alt ?? ''}
                 width={300}
                 height={200}
                 className="object-cover w-full h-full"
@@ -43,30 +43,32 @@ export default function Gallery({ items }: { items: MediaItem[] }) {
         ))}
       </div>
 
-      <Dialog
-        open={!!selected}
-        onClose={() => setSelected(null)}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
-      >
-        <Dialog.Panel className="max-w-3xl w-full p-4">
-          {selected?.type === 'image' ? (
-            <Image
-              src={selected.src}
-              alt={selected.alt || ''}
-              width={800}
-              height={600}
-              className="object-contain w-full h-auto rounded-lg"
-            />
-          ) : (
-            <video
-              src={selected!.src}
-              className="w-full h-auto rounded-lg"
-              controls
-              autoPlay
-            />
-          )}
-        </Dialog.Panel>
-      </Dialog>
+      {selected && (
+        <Dialog
+          open
+          onClose={() => setSelected(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+        >
+          <div className="max-w-3xl w-full bg-transparent">
+            {selected.type === 'image' ? (
+              <Image
+                src={selected.src}
+                alt={selected.alt ?? ''}
+                width={800}
+                height={600}
+                className="object-contain w-full h-auto rounded-lg"
+              />
+            ) : (
+              <video
+                src={selected.src}
+                className="w-full h-auto rounded-lg"
+                controls
+                autoPlay
+              />
+            )}
+          </div>
+        </Dialog>
+      )}
     </>
   )
 }
