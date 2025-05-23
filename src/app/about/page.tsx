@@ -1,6 +1,7 @@
 import React from 'react'
 import { SectionHeading } from '@/components/SectionHeading/SectionHeading'
 import Timeline, { TimelineItem } from '@/components/Timeline/Timeline'
+import CountUp from '@/components/CountUp'
 
 
 export default function AboutPage() {
@@ -30,19 +31,19 @@ export default function AboutPage() {
           <SectionHeading>EYP by the Numbers</SectionHeading>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             <div className="p-6 bg-white/20 rounded-lg text-center">
-              <p className="text-4xl font-bold text-[#FBCFE8]">1987</p>
+              <p className="text-4xl font-bold text-[#FBCFE8]"><CountUp end={1987} duration={2} /></p>
               <p>Founded</p>
             </div>
             <div className="p-6 bg-white/20 rounded-lg text-center">
-              <p className="text-4xl font-bold text-[#10B981]">5000+</p>
+              <p className="text-4xl font-bold text-[#10B981]"><CountUp end={5000} duration={2} /></p>
               <p>Participants to Date</p>
             </div>
             <div className="p-6 bg-white/20 rounded-lg text-center">
-              <p className="text-4xl font-bold text-[#EC4899]">40+</p>
+              <p className="text-4xl font-bold text-[#EC4899]"><CountUp end={40} duration={2} /></p>
               <p>Countries Represented</p>
             </div>
             <div className="p-6 bg-white/20 rounded-lg text-center">
-              <p className="text-4xl font-bold text-[#F59E0B]">2000+</p>
+              <p className="text-4xl font-bold text-[#F59E0B]"> <CountUp end={2000} duration={2} /></p>
               <p>Sessions Held</p>
             </div>
           </div>
