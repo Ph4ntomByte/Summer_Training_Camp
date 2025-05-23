@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import CountdownTimer from '@/components/CountdownTimer'
+import CountdownTimer from '@/components/CountDown/CountdownTimer'
 
 export default function Home() {
   const controls = useAnimation()
