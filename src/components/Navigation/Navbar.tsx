@@ -28,10 +28,10 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <Image
-                src="/images/lotus-logo.png"
+                src="/images/camp_logo_no_background.png"
                 alt="EYP Logo"
-                width={40}
-                height={40}
+                width={60}
+                height={60}
                 className="mr-2"
                 priority
               />
