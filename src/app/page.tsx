@@ -92,6 +92,14 @@ export default function Home() {
                 <p className="text-white/80 flex-grow">Travel and accommodation details</p>
               </div>
             </Link>
+
+            {/* <Link href="/past-camps" className="group h-full">
+              <div className="p-6 bg-white/10 backdrop-blur-sm rounded-lg hover:shadow-lg transition-shadow border-2 border-transparent hover:border-white h-full flex flex-col">
+                <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-white">Past Camps</h3>
+                <p className="text-white/80 flex-grow">Past Camps details</p>
+              </div>
+            </Link> */}
+            
             <Link href="/faq" className="group h-full">
               <div className="p-6 bg-white/10 backdrop-blur-sm rounded-lg hover:shadow-lg transition-shadow border-2 border-transparent hover:border-white h-full flex flex-col">
                 <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-white">FAQ</h3>
