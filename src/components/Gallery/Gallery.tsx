@@ -6,7 +6,7 @@ import { Dialog } from '@headlessui/react'
 
 export interface MediaItem {
   type: 'image' | 'video'
-  src: string
+  src?: string
   alt?: string
 }
 
@@ -19,25 +19,29 @@ export default function Gallery({ items }: { items: MediaItem[] }) {
         {items.map((item, idx) => (
           <div
             key={idx}
-            className="relative cursor-pointer overflow-hidden rounded-lg hover:scale-105 transition-transform"
-            onClick={() => setSelected(item)}
+            className="relative cursor-pointer overflow-hidden rounded-lg hover:scale-105 transition-transform bg-white/10 flex items-center justify-center"
+            onClick={() => item.src && setSelected(item)}
           >
-            {item.type === 'image' ? (
-              <Image
-                src={item.src}
-                alt={item.alt ?? ''}
-                width={300}
-                height={200}
-                className="object-cover w-full h-full"
-              />
+            {item.src ? (
+              item.type === 'image' ? (
+                <Image
+                  src={item.src}
+                  alt={item.alt ?? ''}
+                  width={300}
+                  height={200}
+                  className="object-cover w-full h-full"
+                />
+              ) : (
+                <video
+                  src={item.src}
+                  className="object-cover w-full h-full"
+                  muted
+                  loop
+                  playsInline
+                />
+              )
             ) : (
-              <video
-                src={item.src}
-                className="object-cover w-full h-full"
-                muted
-                loop
-                playsInline
-              />
+              <div className="w-full h-40 bg-gray-700 animate-pulse" />
             )}
           </div>
         ))}
@@ -52,7 +56,7 @@ export default function Gallery({ items }: { items: MediaItem[] }) {
           <div className="max-w-3xl w-full bg-transparent">
             {selected.type === 'image' ? (
               <Image
-                src={selected.src}
+                src={selected.src!}
                 alt={selected.alt ?? ''}
                 width={800}
                 height={600}
@@ -60,7 +64,7 @@ export default function Gallery({ items }: { items: MediaItem[] }) {
               />
             ) : (
               <video
-                src={selected.src}
+                src={selected.src!}
                 className="w-full h-auto rounded-lg"
                 controls
                 autoPlay
