@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import { SectionHeading } from '@/components/SectionHeading/SectionHeading'
 import Timeline, { TimelineItem } from '@/components/Timeline/Timeline'
 import CountUp from '@/components/CountUp'
@@ -13,7 +14,12 @@ export default function AboutPage() {
     { year: '2023', title: 'Azerbaiajn hosted International session' },
     { year: '2025', title: '7th Summer Training Camp' },
   ]
+  const [show2, setShow2] = useState(false)
+  const [show3, setShow3] = useState(false)
+  const [show4, setShow4] = useState(false)
+
   return (
+
     <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32] text-white">
       {/* EYP in General */}
       <section className="py-16">
@@ -31,20 +37,38 @@ export default function AboutPage() {
           <SectionHeading>EYP by the Numbers</SectionHeading>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             <div className="p-6 bg-white/20 rounded-lg text-center">
-              <p className="text-4xl font-bold text-[#FBCFE8]"><CountUp end={1987} duration={2} /></p>
+              <p className="text-4xl font-bold text-[#FBCFE8]">
+                <CountUp start={2025} end={1987} duration={2} onComplete={() => setShow2(true)} />
+              </p>
               <p>Founded</p>
             </div>
             <div className="p-6 bg-white/20 rounded-lg text-center">
-              <p className="text-4xl font-bold text-[#10B981]"><CountUp end={25000} duration={2} /></p>
-              <p>Participants annually</p>
-            </div>
-            <div className="p-6 bg-white/20 rounded-lg text-center">
-              <p className="text-4xl font-bold text-[#EC4899]"><CountUp end={40} duration={2} /></p>
+              <p className="text-4xl font-bold text-[#EC4899]">
+                {show2 ? (
+                  <CountUp end={40} duration={2} onComplete={() => setShow3(true)} />
+                ) : (
+                  '0'
+                )}
+              </p>
               <p>Countries Represented</p>
             </div>
             <div className="p-6 bg-white/20 rounded-lg text-center">
-              <p className="text-4xl font-bold text-[#F59E0B]"> <CountUp end={400} duration={2} /></p>
+              <p className="text-4xl font-bold text-[#F59E0B]">
+                {show3 ? (<CountUp end={400} duration={2} onComplete={() => setShow4(true)} />
+                ) : (
+                  '0'
+                )}
+              </p>
               <p>Sessions annually</p>
+            </div>
+            <div className="p-6 bg-white/20 rounded-lg text-center">
+              <p className="text-4xl font-bold text-[#10B981]">
+                {show4 ? (<CountUp end={25000} duration={10} />
+                ) : (
+                  '0'
+                )}
+              </p>
+              <p>Participants annually</p>
             </div>
           </div>
         </div>
