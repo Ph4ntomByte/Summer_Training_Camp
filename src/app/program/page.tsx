@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { SectionHeading } from '@/components/SectionHeading/SectionHeading'
 import { Button } from '@/components/UI/Button'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const scheduleData = [
   {
@@ -97,23 +98,33 @@ export default function ProgramPage() {
             </p>
           )}
           <div className="bg-white/10 backdrop-blur-sm rounded-lg shadow-md overflow-hidden">
-            {day.activities.map((activity, idx) => (
-              <div
-                key={idx}
-                className={`p-6 ${idx !== day.activities.length - 1 ? 'border-b border-white/20' : ''}`}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={dayIndex}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.4 }}
               >
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <h4 className="text-xl font-semibold text-white">{activity.title}</h4>
-                    <p className="text-white/80 mt-1">{activity.description}</p>
-                    <p className="text-white/60 text-sm">{activity.location}</p>
+                {day.activities.map((activity, idx) => (
+                  <div
+                    key={idx}
+                    className={`p-6 ${idx !== day.activities.length - 1 ? 'border-b border-white/20' : ''}`}
+                  >
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                      <div>
+                        <h4 className="text-xl font-semibold text-white">{activity.title}</h4>
+                        <p className="text-white/80 mt-1">{activity.description}</p>
+                        <p className="text-white/60 text-sm">{activity.location}</p>
+                      </div>
+                      <div className="mt-4 md:mt-0 md:text-right">
+                        <p className="text-white font-medium">{activity.time}</p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="mt-4 md:mt-0 md:text-right">
-                    <p className="text-white font-medium">{activity.time}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+                ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </section>
