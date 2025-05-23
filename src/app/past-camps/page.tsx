@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import { SectionHeading } from '@/components/SectionHeading/SectionHeading'
+import Image from 'next/image'
 
 interface PastCamp {
   year: number
@@ -88,9 +89,29 @@ export default function PastCampsPage() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-              {camp.media.slice(0, 4).map((item, idx) =>
-                item.src ? (
-                  item.type === 'video' ? (
+              {camp.media.slice(0, 4).map((item, idx) => {
+                if (!item.src) {
+                  return (
+                    <div
+                      key={idx}
+                      className="w-full h-40 bg-gray-700 animate-pulse rounded-lg"
+                    />
+                  )
+                }
+                if (item.type === 'video') {
+                  if (item.src.startsWith('http')) {
+                    return (
+                      <iframe
+                        key={idx}
+                        src={item.src}
+                        title={item.alt ?? `video-${idx}`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="w-full h-40 object-cover rounded-lg"
+                      />
+                    )
+                  }
+                  return (
                     <video
                       key={idx}
                       src={item.src}
@@ -99,21 +120,19 @@ export default function PastCampsPage() {
                       muted
                       loop
                     />
-                  ) : (
-                    <img
-                      key={idx}
-                      src={item.src}
-                      alt={item.alt}
-                      className="w-full h-40 object-cover rounded-lg"
-                    />
                   )
-                ) : (
-                  <div
-                    key={idx}
-                    className="w-full h-40 bg-gray-700 animate-pulse rounded-lg"
-                  />
+                }
+                return (
+                  <div key={idx} className="relative w-full h-40 rounded-lg overflow-hidden">
+                    <Image
+                      src={item.src}
+                      alt={item.alt ?? `image-${idx}`}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 )
-              )}
+              })}
             </div>
           </section>
         ))}

@@ -32,12 +32,12 @@ export default function Gallery({ items }: { items: MediaItem[] }) {
                   className="object-cover w-full h-full"
                 />
               ) : (
-                <video
-                  src={item.src}
-                  className="object-cover w-full h-full"
-                  muted
-                  loop
-                  playsInline
+                <iframe
+                  src="https://www.youtube.com/embed/VIDEO_ID"
+                  title="Camp Highlights"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="object-cover w-full h-full rounded-lg"
                 />
               )
             ) : (
