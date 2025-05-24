@@ -39,7 +39,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             <div className="p-6 bg-white/20 rounded-lg text-center">
               <p className="text-4xl font-bold text-[#FBCFE8]">
-                <CountUp start={2025} end={1987} duration={2} onComplete={() => setShow2(true)} />
+                <CountUp start={2025} end={1987} duration={1} onComplete={() => setShow2(true)} />
               </p>
               <p>Founded</p>
             </div>

@@ -14,7 +14,7 @@ export default function Navbar() {
     { href: '/about', label: 'About' },
     { href: '/program', label: 'Program' },
     { href: '/venue', label: 'Venue' },
-    { href: '/past-camps', label: 'Past Camps' },
+    // { href: '/past-camps', label: 'Past Camps' },
     { href: '/faq', label: 'FAQ' }
   ];
   useEffect(() => {
