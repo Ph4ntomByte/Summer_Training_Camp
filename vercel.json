@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "src/app/api/send-reminders/route.ts": {
-      "schedule": "0 9 1 6 * *"
-    }
-  }
-}
