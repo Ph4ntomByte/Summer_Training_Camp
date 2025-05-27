@@ -25,9 +25,9 @@ const scheduleData = [
     day: 'Day 1 – Teambuilding Day',
     date: 'July 12, 2025 (GMT+4)',
     activities: [
-      { time: '07:30–08:00', title: 'Morning activity', description: 'Sunrise yoga and ice-breakers', location: 'Garden Area' },
+      { time: '07:30–08:00', title: 'Morning activity', description: 'Meditation', location: 'Garden Area' },
       { time: '09:00–13:00', title: 'Trip to the venue', description: '', location: 'Off-site Venue' },
-      { time: '13:00–14:00', title: 'General Teambuilding + OC', description: 'Outdoor games with organizers', location: 'Outdoor Field' },
+      { time: '13:00–14:00', title: 'General Teambuilding', description: 'Outdoor games with organizers', location: 'Outdoor Field' },
       { time: '14:00–15:00', title: 'Lunch break', description: 'Picnic-style lunch', location: 'Outdoor Dining' },
       { time: '15:00–16:30', title: 'Training I', description: '', location: 'Workshop Room' },
       { time: '16:30–17:00', title: 'Coffee break', description: 'Afternoon refreshments', location: 'Cafeteria' },
@@ -41,7 +41,7 @@ const scheduleData = [
     day: 'Day 2 – Training Day',
     date: 'July 13, 2025 (GMT+4)',
     activities: [
-      { time: '08:00–08:30', title: 'Morning activity (Academic Team)', description: 'Brain-teasers and warm-ups', location: 'Workshop Room A' },
+      { time: '08:00–08:30', title: 'Morning activity', description: '', location: 'Workshop Room A' },
       { time: '08:30–09:00', title: 'Breakfast', description: ' ', location: 'Dining Area' },
       { time: '09:00–10:30', title: 'Training III', description: '', location: 'Conference Room' },
       { time: '10:30–11:00', title: 'Coffee break', description: 'Mid-morning snacks', location: 'Cafeteria' },
