@@ -1,76 +1,94 @@
-'use client'
+'use client';
+import React, { useState, useRef, FormEvent } from 'react';
+import { SectionHeading } from '@/components/SectionHeading/SectionHeading';
 
-import { useState, FormEvent } from 'react'
-import { SectionHeading } from '@/components/SectionHeading/SectionHeading'
-import { Button } from '@/components/UI/Button'
+const teams = ['Team 1', 'Team 2', 'Team 3', 'Team 4'];
 
 export default function ScavengerHuntPage() {
-    const [team, setTeam] = useState('')
-    const [file, setFile] = useState<File | null>(null)
-    const [msg, setMsg] = useState<string | null>(null)
+    const [team, setTeam] = useState<string>('');
+    const [file, setFile] = useState<File | null>(null);
+    const [preview, setPreview] = useState<string>('');
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+        const f = e.target.files?.[0] ?? null;
+        setFile(f);
+        if (f) setPreview(URL.createObjectURL(f));
+    }
 
     async function handleSubmit(e: FormEvent) {
-        e.preventDefault()
-        if (!team) {
-            setMsg('Please select your team.')
-            return
-        }
-        if (!file) {
-            setMsg('Please choose a file to upload.')
-            return
-        }
-        const form = new FormData()
-        form.set('team', team)
-        form.set('file', file)
-        const res = await fetch('/api/hunt', { method: 'POST', body: form })
-        const json = await res.json()
-        setMsg(json.success ? 'Submission received!' : `Error: ${json.error}`)
+        e.preventDefault();
+        if (!team || !file) return;
+        const form = new FormData();
+        form.append('file', file);
+        form.append('team', team);
+        await fetch('/api/hunt', { method: 'POST', body: form });
     }
 
     return (
-        <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32] text-white py-16">
-            <div className="container mx-auto px-4 max-w-lg space-y-8">
+        <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32] text-white py-20">
+            <div className="max-w-xl mx-auto px-6">
                 <SectionHeading>Scavenger Hunt</SectionHeading>
 
-                <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
-                    <p className="mb-4">
-                        <strong>Hint #1:</strong> Look for the lotus carving by the main entrance, take a photo, and upload it here along with your team name.
+                <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-xl space-y-6">
+                    <p className="text-lg">
+                        🔍 <strong>Hint #1:</strong> Find the lotus-shaped mural in the courtyard and take a clear photo of it.
                     </p>
 
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                        <label className="block">
-                            <span>Team</span>
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        <div>
+                            <label htmlFor="team" className="block mb-2 font-medium">
+                                Your Team
+                            </label>
                             <select
-                                className="mt-1 block w-full bg-white/20 text-white p-2 rounded"
+                                id="team"
                                 value={team}
                                 onChange={e => setTeam(e.target.value)}
+                                className="w-full bg-white/20 px-4 py-2 rounded-lg focus:outline-none"
                             >
                                 <option value="" disabled>
-                                    — Select Team —
+                                    — Select your team —
                                 </option>
-                                <option>Team 1</option>
-                                <option>Team 2</option>
-                                <option>Team 3</option>
-                                <option>Team 4</option>
+                                {teams.map(t => (
+                                    <option key={t} value={t}>
+                                        {t}
+                                    </option>
+                                ))}
                             </select>
-                        </label>
+                        </div>
 
-                        <label className="block">
-                            <span>Upload Photo</span>
+                        <div>
+                            <label className="block mb-2 font-medium">Upload Photo</label>
+                            <div
+                                onClick={() => inputRef.current?.click()}
+                                className="cursor-pointer border-2 border-dashed border-white/50 rounded-lg h-48 flex items-center justify-center hover:border-white transition-colors"
+                            >
+                                {preview ? (
+                                    <img src={preview} className="max-h-full object-contain" />
+                                ) : (
+                                    <span className="text-white/80">Click or drag file here</span>
+                                )}
+                            </div>
                             <input
+                                ref={inputRef}
                                 type="file"
-                                accept="image/*,video/*"
-                                className="mt-1 block w-full text-white"
-                                onChange={e => setFile(e.target.files?.[0] ?? null)}
+                                accept="image/*"
+                                className="sr-only"
+                                onChange={handleFileChange}
                             />
-                        </label>
+                        </div>
 
-                        <Button type="submit">Submit</Button>
+                        <button
+                            type="submit"
+                            disabled={!team || !file}
+                            className="w-full py-3 bg-gradient-to-r from-[#E91E63] to-[#C2185B] rounded-lg text-white font-semibold
+                         disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                        >
+                            Submit Answer
+                        </button>
                     </form>
-
-                    {msg && <p className="mt-4 text-center">{msg}</p>}
                 </div>
             </div>
         </main>
-    )
+    );
 }
