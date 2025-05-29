@@ -51,3 +51,11 @@ body {
     @apply bg-[#E91E63] hover:bg-[#C2185B] text-white font-bold py-3 px-8 rounded-full text-lg transition-colors;
   }
 }
+
+@layer utilities {
+  .transition-width {
+    transition-property: width;
+    transition-timing-function: ease;
+    transition-duration: 2s;
+  }
+}
