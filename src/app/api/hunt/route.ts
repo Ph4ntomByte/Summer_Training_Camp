@@ -1,6 +1,7 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import { NextResponse } from 'next/server'
 import { uploadToS3 } from '@/lib/s3'
+import { query } from '@/lib/db'
 
 export const config = {
   api: {
@@ -18,17 +19,16 @@ export async function POST(request: Request) {
 
     const originalName = (file as any).name as string | undefined
     const filename = `${Date.now()}-${originalName ?? 'upload'}`
-
     const arrayBuf = await file.arrayBuffer()
-    const data = Buffer.from(arrayBuf)
-
+    const buffer = Buffer.from(arrayBuf)
     const contentType = file.type || 'application/octet-stream'
+    const s3Key = `hunt/${filename}`
 
-    await uploadToS3(
-      'neon-lotus-uploads',
-      `hunt/${filename}`,
-      data,
-      contentType
+    await uploadToS3('neon-lotus-uploads', s3Key, buffer, contentType)
+    await query(
+      `INSERT INTO hunt_uploads (filename, s3_key, content_type)
+       VALUES ($1, $2, $3)`,
+      [filename, s3Key, contentType]
     )
 
     return NextResponse.json({ success: true })
