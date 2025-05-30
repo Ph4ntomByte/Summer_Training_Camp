@@ -20,7 +20,6 @@ export default function ScavengerHuntPage() {
     const router = useRouter();
 
     useEffect(() => {
-        // Check authentication and get team
         async function checkAuth() {
             try {
                 const res = await fetch('/api/auth');
@@ -32,6 +31,13 @@ export default function ScavengerHuntPage() {
                 }
                 
                 setTeam(data.user.team);
+                
+                const progressRes = await fetch(`/api/hunt/progress?team=${data.user.team}`);
+                const progressData = await progressRes.json();
+                
+                if (progressData.currentStep !== undefined) {
+                    setStep(progressData.currentStep);
+                }
             } catch (error) {
                 console.error('Auth check failed:', error);
                 router.push('/login');
@@ -61,17 +67,33 @@ export default function ScavengerHuntPage() {
         form.append('hintNumber', String(step));
 
         try {
-            await fetch('/api/hunt', {
+            const response = await fetch('/api/hunt', {
                 method: 'POST',
                 body: form,
             });
-        } catch {
-            // TODO
-        }
-
-        setTimeout(() => {
+            
+            if (!response.ok) {
+                throw new Error('Submission failed');
+            }
+            
+            await fetch('/api/hunt/progress', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    team,
+                    currentStep: step + 1,
+                    completedHint: step
+                }),
+            });
+            
             setShowCongrats(true);
-        }, 2000);
+        } catch (error) {
+            console.error('Submission error:', error);
+            setSubmitting(false);
+            if (barRef.current) barRef.current.style.width = '0%';
+        }
     }
 
     function handleNext() {
@@ -117,7 +139,8 @@ export default function ScavengerHuntPage() {
                         ) : (
                             <>
                                 <div className="text-center mb-6">
-                                    <p className="text-lg font-medium">Team: {team}</p>
+                                    <p className="text-lg font-medium"> {team}</p>
+                                    <p className="text-sm text-white/70">Current Progress: {step + 1}/{hints.length}</p>
                                 </div>
                                 <p className="text-lg">{hints[step]}</p>
                                 <form onSubmit={handleSubmit} className="space-y-6">

@@ -6,7 +6,7 @@ export async function POST(request: Request) {
   try {
     const { username, password } = await request.json()
     
-    // Query user from database with team information
+
     const users = await query<{ username: string; team: string }>(
       'SELECT username, team FROM users WHERE username = $1 AND password = $2',
       [username, password]
