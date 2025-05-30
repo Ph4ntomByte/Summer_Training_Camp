@@ -6,9 +6,8 @@ export async function POST(request: Request) {
   try {
     const { username, password } = await request.json()
     
-
-    const users = await query<{ username: string; team: string }>(
-      'SELECT username, team FROM users WHERE username = $1 AND password = $2',
+    const users = await query<{ username: string; team: string; role: string }>(
+      'SELECT username, team, role FROM users WHERE username = $1 AND password = $2',
       [username, password]
     )
     
@@ -24,6 +23,7 @@ export async function POST(request: Request) {
       id: Math.random().toString(36).substring(7),
       username: user.username,
       team: user.team,
+      role: user.role,
       createdAt: new Date().toISOString()
     }
 
@@ -31,7 +31,8 @@ export async function POST(request: Request) {
       success: true,
       user: {
         username: user.username,
-        team: user.team
+        team: user.team,
+        role: user.role
       }
     })
 
@@ -69,7 +70,8 @@ export async function GET() {
       authenticated: true,
       user: {
         username: sessionData.username,
-        team: sessionData.team
+        team: sessionData.team,
+        role: sessionData.role
       }
     })
   } catch (error) {

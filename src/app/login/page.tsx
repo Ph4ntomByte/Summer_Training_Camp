@@ -29,7 +29,12 @@ export default function LoginPage() {
         throw new Error(data.error || 'Login failed')
       }
 
-      router.push('/scavenger-hunt')
+      // Redirect based on role
+      if (data.user.role === 'admin') {
+        router.push('/admin')
+      } else {
+        router.push('/scavenger-hunt')
+      }
       router.refresh()
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
