@@ -23,7 +23,8 @@ export async function POST(request: Request) {
     const session = {
       id: Math.random().toString(36).substring(7),
       username: user.username,
-      team: user.team,
+      // Only include team if user is not an admin
+      ...(user.role !== 'admin' && { team: user.team }),
       role: user.role,
       createdAt: new Date().toISOString()
     }
@@ -32,7 +33,8 @@ export async function POST(request: Request) {
       success: true,
       user: {
         username: user.username,
-        team: user.team,
+        // Only include team if user is not an admin
+        ...(user.role !== 'admin' && { team: user.team }),
         role: user.role
       }
     })
@@ -71,7 +73,7 @@ export async function GET() {
       authenticated: true,
       user: {
         username: sessionData.username,
-        team: sessionData.team,
+        ...(sessionData.role !== 'admin' && { team: sessionData.team }),
         role: sessionData.role
       }
     })

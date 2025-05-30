@@ -1,7 +1,7 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import { NextResponse } from 'next/server'
-import { uploadToS3 } from '@/lib/s3'
 import { query } from '@/lib/db'
+import { cookies } from 'next/headers'
 
 export const config = {
     api: {
@@ -13,10 +13,23 @@ export async function POST(request: Request) {
     try {
         const formData = await request.formData()
 
-        const team = formData.get('team')
-        if (typeof team !== 'string' || !team) {
+        // Check authentication
+        const cookieStore = await cookies()
+        const session = cookieStore.get('session')
+        
+        if (!session) {
             return NextResponse.json(
-                { error: 'No team provided' },
+                { error: 'Not authenticated' },
+                { status: 401 }
+            )
+        }
+
+        const sessionData = JSON.parse(session.value)
+        const team = sessionData.team
+
+        if (!team) {
+            return NextResponse.json(
+                { error: 'No team found in session' },
                 { status: 400 }
             )
         }
@@ -29,30 +42,58 @@ export async function POST(request: Request) {
             )
         }
 
-        const originalName = (file as any).name as string | undefined
-        const filename = `${Date.now()}-${originalName ?? 'upload'}`
+        const hintNumber = formData.get('hintNumber')
+        if (!hintNumber) {
+            return NextResponse.json(
+                { error: 'No hint number provided' },
+                { status: 400 }
+            )
+        }
 
-        const arrayBuf = await file.arrayBuffer()
-        const data = Buffer.from(arrayBuf)
+        try {
+            // Convert file to base64
+            const arrayBuf = await file.arrayBuffer()
+            const base64 = Buffer.from(arrayBuf).toString('base64')
+            const imageData = `data:${file.type};base64,${base64}`
 
-        const contentType = file.type || 'application/octet-stream'
-        await uploadToS3(
-            'neon-lotus-uploads',
-            `hunt/${filename}`,
-            data,
-            contentType
-        )
+            console.log('Attempting database insert with:', {
+                team,
+                hintNumber,
+                imageDataLength: imageData.length
+            })
 
-        await query(
-            `INSERT INTO scavenger_submissions (team, s3_key) VALUES ($1, $2)`,
-            [team, filename]
-        )
+            // First check if table exists
+            const tableCheck = await query(
+                `SELECT EXISTS (
+                    SELECT FROM information_schema.tables 
+                    WHERE table_name = 'submissions'
+                )`
+            )
+            console.log('Table exists check:', tableCheck)
 
-        return NextResponse.json({ success: true })
+            // Save to database
+            const result = await query(
+                `INSERT INTO submissions (team, hint_number, image_url, status) 
+                 VALUES ($1, $2, $3, $4)
+                 ON CONFLICT (team, hint_number) 
+                 DO UPDATE SET image_url = $3, status = $4
+                 RETURNING *`,
+                [team, hintNumber, imageData, 'pending']
+            )
+            console.log('Database insert result:', result)
+
+            return NextResponse.json({ success: true })
+        } catch (dbError) {
+            console.error('Database operation error:', dbError)
+            return NextResponse.json(
+                { error: 'Database operation failed: ' + (dbError instanceof Error ? dbError.message : 'Unknown error') },
+                { status: 500 }
+            )
+        }
     } catch (err) {
-        console.error(err)
+        console.error('Hunt submission error:', err)
         return NextResponse.json(
-            { error: 'Upload and save failed' },
+            { error: 'Upload and save failed: ' + (err instanceof Error ? err.message : 'Unknown error') },
             { status: 500 }
         )
     }
