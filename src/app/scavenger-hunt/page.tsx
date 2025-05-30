@@ -1,25 +1,53 @@
 'use client';
-import React, { useState, useRef, FormEvent } from 'react';
+import React, { useState, useRef, FormEvent, useEffect } from 'react';
 import { SectionHeading } from '@/components/SectionHeading/SectionHeading';
+import { useRouter } from 'next/navigation';
 
 const hints = [
     '🔍 Hint #1: Find the lotus‐shaped mural in the courtyard and take a clear photo.',
     '🔍 Hint #2: Locate the mosaic fountain by the east gate and snap a picture.',
 ];
-const teams = ['Team 1', 'Team 2', 'Team 3', 'Team 4'];
 
 export default function ScavengerHuntPage() {
     const [step, setStep] = useState(0);
-    const [team, setTeam] = useState('');
+    const [team, setTeam] = useState<string | null>(null);
     const [file, setFile] = useState<File | null>(null);
     const [preview, setPreview] = useState('');
     const [submitting, setSubmitting] = useState(false);
     const [showCongrats, setShowCongrats] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
     const barRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
+
+    useEffect(() => {
+        async function checkAuth() {
+            try {
+                const res = await fetch('/api/auth');
+                const data = await res.json();
+                
+                if (!data.authenticated) {
+                    router.push('/login');
+                    return;
+                }
+                
+                setTeam(data.user.team);
+                
+                const progressRes = await fetch(`/api/hunt/progress?team=${data.user.team}`);
+                const progressData = await progressRes.json();
+                
+                if (progressData.currentStep !== undefined) {
+                    setStep(progressData.currentStep);
+                }
+            } catch (error) {
+                console.error('Auth check failed:', error);
+                router.push('/login');
+            }
+        }
+        
+        checkAuth();
+    }, [router]);
 
     function resetForm() {
-        setTeam('');
         setFile(null);
         setPreview('');
         if (barRef.current) barRef.current.style.width = '0%';
@@ -39,17 +67,33 @@ export default function ScavengerHuntPage() {
         form.append('hintNumber', String(step));
 
         try {
-            await fetch('/api/hunt', {
+            const response = await fetch('/api/hunt', {
                 method: 'POST',
                 body: form,
             });
-        } catch {
-            // TODO
-        }
-
-        setTimeout(() => {
+            
+            if (!response.ok) {
+                throw new Error('Submission failed');
+            }
+            
+            await fetch('/api/hunt/progress', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    team,
+                    currentStep: step + 1,
+                    completedHint: step
+                }),
+            });
+            
             setShowCongrats(true);
-        }, 2000);
+        } catch (error) {
+            console.error('Submission error:', error);
+            setSubmitting(false);
+            if (barRef.current) barRef.current.style.width = '0%';
+        }
     }
 
     function handleNext() {
@@ -60,6 +104,18 @@ export default function ScavengerHuntPage() {
         } else {
             setStep(hints.length);
         }
+    }
+
+    if (!team) {
+        return (
+            <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32] text-white py-20">
+                <div className="max-w-xl mx-auto px-6 space-y-8">
+                    <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-xl space-y-6 text-center">
+                        <p>Loading...</p>
+                    </div>
+                </div>
+            </main>
+        );
     }
 
     return (
@@ -82,21 +138,12 @@ export default function ScavengerHuntPage() {
                             </div>
                         ) : (
                             <>
+                                <div className="text-center mb-6">
+                                    <p className="text-lg font-medium"> {team}</p>
+                                    <p className="text-sm text-white/70">Current Progress: {step + 1}/{hints.length}</p>
+                                </div>
                                 <p className="text-lg">{hints[step]}</p>
                                 <form onSubmit={handleSubmit} className="space-y-6">
-                                    <div>
-                                        <label htmlFor="team" className="block mb-2 font-medium">Your Team</label>
-                                        <select
-                                            id="team"
-                                            value={team}
-                                            onChange={e => setTeam(e.target.value)}
-                                            disabled={submitting}
-                                            className="w-full bg-white/20 px-4 py-2 rounded-lg focus:outline-none disabled:opacity-60"
-                                        >
-                                            <option value="" disabled>— Select your team —</option>
-                                            {teams.map(t => <option key={t} value={t}>{t}</option>)}
-                                        </select>
-                                    </div>
                                     <div>
                                         <label className="block mb-2 font-medium">Upload Photo</label>
                                         <div
@@ -124,7 +171,7 @@ export default function ScavengerHuntPage() {
                                     </div>
                                     <button
                                         type="submit"
-                                        disabled={!team || !file || submitting}
+                                        disabled={!file || submitting}
                                         className="w-full py-3 bg-gradient-to-r from-[#E91E63] to-[#C2185B] rounded-lg text-white font-semibold
                                disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center"
                                     >
