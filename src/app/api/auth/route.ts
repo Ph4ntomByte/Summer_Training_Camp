@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 import { query } from '@/lib/db'
@@ -45,7 +46,7 @@ export async function POST(request: Request) {
 
     return response
   } catch (error) {
-    console.error('Auth error:', error)
+    console.error('Auth error:', error instanceof Error ? error.message : 'Unknown error')
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -75,6 +76,7 @@ export async function GET() {
       }
     })
   } catch (error) {
+    console.error('Auth check error:', error instanceof Error ? error.message : 'Unknown error')
     return NextResponse.json(
       { error: 'Not authenticated' },
       { status: 401 }
