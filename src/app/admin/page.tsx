@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 interface TeamProgress {
     team: string;
     currentStep: number;
-    completedHints: number[];
     submissions: {
         hintNumber: number;
         timestamp: string;
@@ -160,7 +159,7 @@ export default function AdminPage() {
                                         <div 
                                             className="h-full bg-[#10B981] transition-all"
                                             style={{ 
-                                                width: `${(team.completedHints.length / 2) * 100}%` 
+                                                width: `${(team.currentStep / 2) * 100}%` 
                                             }}
                                         />
                                     </div>

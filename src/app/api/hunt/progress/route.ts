@@ -20,15 +20,14 @@ export async function GET(request: Request) {
 
         if (result.length === 0) {
             await query(
-                'INSERT INTO team_progress (team, current_step, completed_hints) VALUES ($1, 0, $2)',
+                'INSERT INTO team_progress (team, current_step) VALUES ($1, 0)',
                 [team, '[]']
             );
-            return NextResponse.json({ currentStep: 0, completedHints: [] });
+            return NextResponse.json({ currentStep: 0 });
         }
 
         return NextResponse.json({
             currentStep: result[0].current_step,
-            completedHints: result[0].completed_hints
         });
     } catch (error) {
         console.error('Progress fetch error:', error);
@@ -52,8 +51,7 @@ export async function POST(request: Request) {
 
         await query(
             `UPDATE team_progress 
-             SET current_step = $1, 
-                 completed_hints = completed_hints || $2::jsonb
+             SET current_step = current_step + 1
              WHERE team = $3`,
             [currentStep, JSON.stringify([completedHint]), team]
         );

@@ -39,10 +39,9 @@ export async function POST(request: Request) {
 
             await query(
                 `UPDATE team_progress 
-                 SET current_step = $1, 
-                     completed_hints = completed_hints || $2::jsonb
+                 SET current_step = $1
                  WHERE team = $3`,
-                [hintNumber + 1, JSON.stringify([hintNumber]), team]
+                [hintNumber + 1, team]
             );
         } else if (action === 'reject') {
             await query(

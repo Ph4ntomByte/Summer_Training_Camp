@@ -13,7 +13,6 @@ export async function POST(request: Request) {
     try {
         const formData = await request.formData()
 
-        // Check authentication
         const cookieStore = await cookies()
         const session = cookieStore.get('session')
         
@@ -51,7 +50,6 @@ export async function POST(request: Request) {
         }
 
         try {
-            // Convert file to base64
             const arrayBuf = await file.arrayBuffer()
             const base64 = Buffer.from(arrayBuf).toString('base64')
             const imageData = `data:${file.type};base64,${base64}`
@@ -62,7 +60,6 @@ export async function POST(request: Request) {
                 imageDataLength: imageData.length
             })
 
-            // First check if table exists
             const tableCheck = await query(
                 `SELECT EXISTS (
                     SELECT FROM information_schema.tables 
@@ -71,7 +68,6 @@ export async function POST(request: Request) {
             )
             console.log('Table exists check:', tableCheck)
 
-            // Save to database
             const result = await query(
                 `INSERT INTO submissions (team, hint_number, image_url, status) 
                  VALUES ($1, $2, $3, $4)
