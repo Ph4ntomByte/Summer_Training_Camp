@@ -19,6 +19,24 @@ export default function ScavengerHuntPage() {
     const barRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
 
+    const handleLogout = async () => {
+        console.log('Logout clicked');
+        try {
+            const response = await fetch('/api/auth/logout', {
+                method: 'POST',
+                credentials: 'include',
+            });
+            console.log('Logout response:', response);
+            if (response.ok) {
+                router.push('/login');
+            } else {
+                console.error('Logout failed:', await response.text());
+            }
+        } catch (error) {
+            console.error('Logout error:', error);
+        }
+    };
+
     useEffect(() => {
         async function checkAuth() {
             try {
@@ -139,7 +157,15 @@ export default function ScavengerHuntPage() {
                         ) : (
                             <>
                                 <div className="text-center mb-6">
-                                    <p className="text-lg font-medium"> {team}</p>
+                                    <div className="flex justify-between items-center mb-2">
+                                        <p className="text-lg font-medium">{team}</p>
+                                        <button
+                                            onClick={handleLogout}
+                                            className="px-4 py-1 bg-red-500 hover:bg-red-600 rounded-lg text-white text-sm font-medium transition"
+                                        >
+                                            Logout
+                                        </button>
+                                    </div>
                                     <p className="text-sm text-white/70">Current Progress: {step + 1}/{hints.length}</p>
                                 </div>
                                 <p className="text-lg">{hints[step]}</p>
