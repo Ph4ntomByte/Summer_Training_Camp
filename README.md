@@ -1,4 +1,4 @@
-<img src="public/images/lotus-logo.png" alt="Logo" width="200" />
+<img src="public/images/camp_logo_no_background.png" alt="Logo" width="200" />
 
 # EYP Summer Training Camp Website
 
@@ -29,9 +29,9 @@
 
 ## 🗺️ Roadmap
 
-- [x] **Gallery**: snapshots, videos from past camps
-- [ ] **Venue & Logistics**: maps, travel tips, accommodations
-- [ ] **Registration**: online application, deadlines, payment
+- [x] **Registration**: online application, deadlines, payment
+- [x] **Scavenger Hunt**: snapshots, videos from past camps
+- [x] **Venue & Logistics**: maps, travel tips, accommodations
 - [ ] **News & Blog**: updates, stories, highlights
 
 > Want to help? See [open issues](https://github.com/Ph4ntomByte/Summer_Training_Camp/issues) or suggest a feature!
@@ -65,12 +65,6 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 npm run build
 npm start
 ```
-
----
-
-## 🌎 Deployment
-
-Describe where and how to deploy the site (e.g., Vercel, Netlify, Docker, etc.)
 
 ---
 
