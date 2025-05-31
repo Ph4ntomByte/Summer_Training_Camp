@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { SectionHeading } from '@/components/SectionHeading/SectionHeading';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image'
 
 interface TeamProgress {
     team: string;
@@ -130,7 +131,7 @@ export default function AdminPage() {
                                 >
                                     <div className="flex justify-between items-center">
                                         <span className="font-medium">{team.team}</span>
-                                        <span className="text-sm text-white/70">Step {team.current_step }</span>
+                                        <span className="text-sm text-white/70">Step {team.current_step}</span>
                                     </div>
                                     <div className="mt-2 h-2 bg-white/20 rounded-full overflow-hidden">
                                         <div
@@ -159,11 +160,14 @@ export default function AdminPage() {
                                                     {new Date(submission.created_at).toLocaleString()}
                                                 </span>
                                             </div>
-                                            <img
-                                                src={submission.image_url}
-                                                alt={`Submission for hint ${submission.hint_number + 1}`}
-                                                className="w-full h-48 object-cover rounded-lg mb-2"
-                                            />
+                                            <div className="relative w-full h-48 mb-2 rounded-lg overflow-hidden">
+                                                <Image
+                                                    src={submission.image_url}
+                                                    alt={`Submission for hint ${submission.hint_number + 1}`}
+                                                    fill
+                                                    className="object-cover"
+                                                />
+                                            </div>
                                             <div className="flex gap-2">
                                                 <button
                                                     onClick={() =>
