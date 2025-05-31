@@ -23,7 +23,7 @@ const scheduleData = [
   },
   {
     day: 'Day 1 – Teambuilding Day',
-    date: 'July 12, 2025 (GMT+4)',
+    date: 'July 11, 2025 (GMT+4)',
     activities: [
       { time: '07:30–08:00', title: 'Morning activity', description: 'Meditation', location: 'Garden Area' },
       { time: '09:00–13:00', title: 'Trip to the venue', description: '', location: 'Off-site Venue' },
@@ -39,7 +39,7 @@ const scheduleData = [
   },
   {
     day: 'Day 2 – Training Day',
-    date: 'July 13, 2025 (GMT+4)',
+    date: 'July 12, 2025 (GMT+4)',
     activities: [
       { time: '08:00–08:30', title: 'Morning activity', description: '', location: 'Workshop Room A' },
       { time: '08:30–09:00', title: 'Breakfast', description: ' ', location: 'Dining Area' },
@@ -59,7 +59,7 @@ const scheduleData = [
   },
   {
     day: 'Day 3 – Training Day',
-    date: 'July 14, 2025 (GMT+4)',
+    date: 'July 13, 2025 (GMT+4)',
     activities: [
       { time: '08:30–09:30', title: 'Breakfast', description: 'Final group breakfast', location: 'Dining Area' },
       { time: '09:30–10:30', title: 'Packing up', description: 'Prepare for departure', location: 'All Areas' },
