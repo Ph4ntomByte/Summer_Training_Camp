@@ -4,7 +4,6 @@ import { cookies } from 'next/headers';
 
 export async function POST(request: Request) {
     try {
-        // Check if user is admin
         const cookieStore = await cookies();
         const session = cookieStore.get('session');
         
@@ -33,13 +32,11 @@ export async function POST(request: Request) {
         }
 
         if (action === 'approve') {
-            // Update submission status
             await query(
                 'UPDATE submissions SET status = $1 WHERE team = $2 AND hint_number = $3',
                 ['approved', team, hintNumber]
             );
 
-            // Update team progress
             await query(
                 `UPDATE team_progress 
                  SET current_step = $1, 
@@ -48,7 +45,6 @@ export async function POST(request: Request) {
                 [hintNumber + 1, JSON.stringify([hintNumber]), team]
             );
         } else if (action === 'reject') {
-            // Update submission status
             await query(
                 'UPDATE submissions SET status = $1 WHERE team = $2 AND hint_number = $3',
                 ['rejected', team, hintNumber]

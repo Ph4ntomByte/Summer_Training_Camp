@@ -20,6 +20,23 @@ export default function AdminPage() {
     const [selectedTeam, setSelectedTeam] = useState<string | null>(null);
     const router = useRouter();
 
+    const handleLogout = async () => {
+        try {
+            const response = await fetch('/api/auth/logout', {
+                method: 'POST',
+                credentials: 'include',
+            });
+            
+            if (response.ok) {
+                router.replace('/login');
+            } else {
+                console.error('Logout failed:', await response.text());
+            }
+        } catch (error) {
+            console.error('Logout error:', error);
+        }
+    };
+
     useEffect(() => {
         async function checkAuth() {
             try {
@@ -45,9 +62,10 @@ export default function AdminPage() {
         try {
             const res = await fetch('/api/admin/teams');
             const data = await res.json();
-            setTeams(data.teams);
+            setTeams(data.teams || []);
         } catch (error) {
             console.error('Failed to fetch teams:', error);
+            setTeams([]);
         } finally {
             setLoading(false);
         }
@@ -67,7 +85,7 @@ export default function AdminPage() {
                 }),
             });
             
-            fetchTeams(); // Refresh the data
+            fetchTeams();
         } catch (error) {
             console.error('Failed to approve submission:', error);
         }
@@ -87,7 +105,7 @@ export default function AdminPage() {
                 }),
             });
             
-            fetchTeams(); // Refresh the data
+            fetchTeams();
         } catch (error) {
             console.error('Failed to reject submission:', error);
         }
@@ -108,14 +126,21 @@ export default function AdminPage() {
     return (
         <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32] text-white py-20">
             <div className="max-w-6xl mx-auto px-6 space-y-8">
-                <SectionHeading>Admin Dashboard</SectionHeading>
+                <div className="flex justify-between items-center">
+                    <SectionHeading>Admin Dashboard</SectionHeading>
+                    <button
+                        onClick={handleLogout}
+                        className="px-4 py-2 bg-red-500 hover:bg-red-600 rounded-lg text-white text-sm font-medium transition"
+                    >
+                        Logout
+                    </button>
+                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Teams Overview */}
                     <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-xl">
                         <h2 className="text-xl font-bold mb-4">Teams Progress</h2>
                         <div className="space-y-4">
-                            {teams.map(team => (
+                            {teams?.map(team => (
                                 <div 
                                     key={team.team}
                                     className={`p-4 rounded-lg cursor-pointer transition-colors ${
@@ -144,7 +169,6 @@ export default function AdminPage() {
                         </div>
                     </div>
 
-                    {/* Submissions */}
                     <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-xl">
                         <h2 className="text-xl font-bold mb-4">
                             {selectedTeam ? `${selectedTeam} Submissions` : 'Select a Team'}
