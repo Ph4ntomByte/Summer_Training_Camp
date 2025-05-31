@@ -20,15 +20,23 @@ export default function ScavengerHuntPage() {
     const router = useRouter();
 
     const handleLogout = async () => {
-        console.log('Logout clicked');
         try {
             const response = await fetch('/api/auth/logout', {
                 method: 'POST',
                 credentials: 'include',
             });
-            console.log('Logout response:', response);
+            
             if (response.ok) {
-                router.push('/login');
+                // Clear all state before redirecting
+                setTeam(null);
+                setStep(0);
+                setFile(null);
+                setPreview('');
+                setSubmitting(false);
+                setShowCongrats(false);
+                
+                // Use replace instead of push to prevent back button issues
+                router.replace('/login');
             } else {
                 console.error('Logout failed:', await response.text());
             }

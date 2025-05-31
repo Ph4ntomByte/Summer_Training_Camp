@@ -4,7 +4,6 @@ import { cookies } from 'next/headers';
 
 export async function GET() {
     try {
-        // Check if user is admin
         const cookieStore = await cookies();
         const session = cookieStore.get('session');
         
@@ -23,7 +22,6 @@ export async function GET() {
             );
         }
 
-        // Get all teams progress
         const teams = await query<{
             team: string;
             current_step: number;
@@ -32,7 +30,6 @@ export async function GET() {
             'SELECT team, current_step, completed_hints FROM team_progress'
         );
 
-        // Get all submissions
         const submissions = await query<{
             team: string;
             hint_number: number;
@@ -43,7 +40,6 @@ export async function GET() {
             'SELECT team, hint_number, image_url, timestamp, status FROM submissions ORDER BY timestamp DESC'
         );
 
-        // Combine the data
         const teamsWithSubmissions = teams.map(team => ({
             team: team.team,
             currentStep: team.current_step,
