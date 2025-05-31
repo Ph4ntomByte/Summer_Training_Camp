@@ -66,12 +66,12 @@ export default function AdminPage() {
         }
     }
 
-    async function handleApproveSubmission(team: string, hintNumber: number) {
+    async function handleApproveSubmission(team: string, hint_number: number) {
         try {
             await fetch('/api/admin/submissions', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ team, hintNumber, action: 'approve' }),
+                body: JSON.stringify({ team, hint_number, action: 'approve' }),
             });
             fetchTeams();
         } catch (error) {
@@ -79,12 +79,12 @@ export default function AdminPage() {
         }
     }
 
-    async function handleRejectSubmission(team: string, hintNumber: number) {
+    async function handleRejectSubmission(team: string, hint_number: number) {
         try {
             await fetch('/api/admin/submissions', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ team, hintNumber, action: 'reject' }),
+                body: JSON.stringify({ team, hint_number, action: 'reject' }),
             });
             fetchTeams();
         } catch (error) {
@@ -130,7 +130,7 @@ export default function AdminPage() {
                                 >
                                     <div className="flex justify-between items-center">
                                         <span className="font-medium">{team.team}</span>
-                                        <span className="text-sm text-white/70">Step {team.current_step}</span>
+                                        <span className="text-sm text-white/70">Step {team.current_step }</span>
                                     </div>
                                     <div className="mt-2 h-2 bg-white/20 rounded-full overflow-hidden">
                                         <div
@@ -154,14 +154,14 @@ export default function AdminPage() {
                                     ?.submissions?.map((submission) => (
                                         <div key={submission.created_at} className="bg-white/5 rounded-lg p-4">
                                             <div className="flex justify-between items-start mb-2">
-                                                <span className="font-medium">Hint #{submission.created_at}</span>
+                                                <span className="font-medium">Hint #{(submission.hint_number).toLocaleString()}</span>
                                                 <span className="text-sm text-white/70">
                                                     {new Date(submission.created_at).toLocaleString()}
                                                 </span>
                                             </div>
                                             <img
                                                 src={submission.image_url}
-                                                alt={`Submission for hint ${submission.hint_number}`}
+                                                alt={`Submission for hint ${submission.hint_number + 1}`}
                                                 className="w-full h-48 object-cover rounded-lg mb-2"
                                             />
                                             <div className="flex gap-2">

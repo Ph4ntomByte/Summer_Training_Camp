@@ -26,26 +26,28 @@ export async function GET() {
             team: string;
             current_step: number;
         }>(
-            'SELECT team, current_step FROM team_progress'
+            'SELECT team, current_step FROM team_progress ORDER BY current_step DESC'
         );
 
         const submissions = await query<{
             team: string;
             hint_number: number;
             image_url: string;
+            created_at: string;
             status: string;
         }>(
-            'SELECT team, hint_number, image_url, status FROM submissions'
+            'SELECT team, hint_number, image_url, created_at, status FROM submissions'
         );
 
         const teamsWithSubmissions = teams.map(team => ({
             team: team.team,
-            currentStep: team.current_step,
+            current_step: team.current_step,
             submissions: submissions
                 .filter(s => s.team === team.team)
                 .map(s => ({
                     hint_number: s.hint_number,
-                    imageUrl: s.image_url,
+                    image_url: s.image_url,
+                    created_at: s.created_at,
                     status: s.status
                 }))
         }));

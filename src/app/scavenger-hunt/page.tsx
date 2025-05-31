@@ -27,7 +27,6 @@ export default function ScavengerHuntPage() {
             });
             
             if (response.ok) {
-                // Clear all state before redirecting
                 setTeam(null);
                 setStep(0);
                 setFile(null);
@@ -35,7 +34,6 @@ export default function ScavengerHuntPage() {
                 setSubmitting(false);
                 setShowCongrats(false);
                 
-                // Use replace instead of push to prevent back button issues
                 router.replace('/login');
             } else {
                 console.error('Logout failed:', await response.text());
