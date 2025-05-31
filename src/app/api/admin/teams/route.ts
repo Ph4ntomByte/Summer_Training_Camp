@@ -1,26 +1,61 @@
-import { NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
-import { query } from '@/lib/db'
+import { NextResponse } from 'next/server';
+import { query } from '@/lib/db';
+import { cookies } from 'next/headers';
 
 export async function GET() {
-  try {
-    const cookieStore = await cookies()
-    const sessionCookie = cookieStore.get('session')
-    if (!sessionCookie) {
-      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
-    }
-    const session = JSON.parse(sessionCookie.value)
-    if (session.role !== 'admin') {
-      return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
-    }
+    try {
+        const cookieStore = await cookies();
+        const session = cookieStore.get('session');
+        
+        if (!session) {
+            return NextResponse.json(
+                { error: 'Not authenticated' },
+                { status: 401 }
+            );
+        }
 
-    const rows = await query<{ team: string; current_step: number }>(
-      `SELECT team, current_step FROM team_progress ORDER BY team`
-    )
+        const sessionData = JSON.parse(session.value);
+        if (sessionData.role !== 'admin') {
+            return NextResponse.json(
+                { error: 'Not authorized' },
+                { status: 403 }
+            );
+        }
 
-    return NextResponse.json({ teams: rows })
-  } catch (err) {
-    console.error(err)
-    return NextResponse.json({ error: 'Failed to fetch teams' }, { status: 500 })
-  }
-}
+        const teams = await query<{
+            team: string;
+            current_step: number;
+        }>(
+            'SELECT team, current_step FROM team_progress'
+        );
+
+        const submissions = await query<{
+            team: string;
+            hint_number: number;
+            image_url: string;
+            status: string;
+        }>(
+            'SELECT team, hint_number, image_url, status FROM submissions'
+        );
+
+        const teamsWithSubmissions = teams.map(team => ({
+            team: team.team,
+            currentStep: team.current_step,
+            submissions: submissions
+                .filter(s => s.team === team.team)
+                .map(s => ({
+                    hint_number: s.hint_number,
+                    imageUrl: s.image_url,
+                    status: s.status
+                }))
+        }));
+
+        return NextResponse.json({ teams: teamsWithSubmissions });
+    } catch (error) {
+        console.error('Failed to fetch teams:', error);
+        return NextResponse.json(
+            { error: 'Internal server error' },
+            { status: 500 }
+        );
+    }
+} 

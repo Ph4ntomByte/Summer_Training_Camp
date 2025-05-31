@@ -5,11 +5,11 @@ import { useRouter } from 'next/navigation';
 
 interface TeamProgress {
     team: string;
-    currentStep: number;
+    current_step: number;
     submissions: {
-        hintNumber: number;
-        timestamp: string;
-        imageUrl: string;
+        hint_number: number;
+        created_at: string;
+        image_url: string;
     }[];
 }
 
@@ -130,12 +130,12 @@ export default function AdminPage() {
                                 >
                                     <div className="flex justify-between items-center">
                                         <span className="font-medium">{team.team}</span>
-                                        <span className="text-sm text-white/70">Step {team.currentStep + 1}</span>
+                                        <span className="text-sm text-white/70">Step {team.current_step}</span>
                                     </div>
                                     <div className="mt-2 h-2 bg-white/20 rounded-full overflow-hidden">
                                         <div
                                             className="h-full bg-[#10B981] transition-all"
-                                            style={{ width: `${(team.currentStep / 2) * 100}%` }}
+                                            style={{ width: `${(team.current_step / 2) * 100}%` }}
                                         />
                                     </div>
                                 </div>
@@ -152,22 +152,22 @@ export default function AdminPage() {
                                 {teams
                                     .find((t) => t.team === selectedTeam)
                                     ?.submissions?.map((submission) => (
-                                        <div key={submission.timestamp} className="bg-white/5 rounded-lg p-4">
+                                        <div key={submission.created_at} className="bg-white/5 rounded-lg p-4">
                                             <div className="flex justify-between items-start mb-2">
-                                                <span className="font-medium">Hint #{submission.hintNumber + 1}</span>
+                                                <span className="font-medium">Hint #{submission.created_at}</span>
                                                 <span className="text-sm text-white/70">
-                                                    {new Date(submission.timestamp).toLocaleString()}
+                                                    {new Date(submission.created_at).toLocaleString()}
                                                 </span>
                                             </div>
                                             <img
-                                                src={submission.imageUrl}
-                                                alt={`Submission for hint ${submission.hintNumber + 1}`}
+                                                src={submission.image_url}
+                                                alt={`Submission for hint ${submission.hint_number}`}
                                                 className="w-full h-48 object-cover rounded-lg mb-2"
                                             />
                                             <div className="flex gap-2">
                                                 <button
                                                     onClick={() =>
-                                                        handleApproveSubmission(selectedTeam, submission.hintNumber)
+                                                        handleApproveSubmission(selectedTeam, submission.hint_number)
                                                     }
                                                     className="flex-1 py-2 bg-[#10B981] hover:bg-[#0f9f76] rounded-lg text-white font-medium transition"
                                                 >
@@ -175,7 +175,7 @@ export default function AdminPage() {
                                                 </button>
                                                 <button
                                                     onClick={() =>
-                                                        handleRejectSubmission(selectedTeam, submission.hintNumber)
+                                                        handleRejectSubmission(selectedTeam, submission.hint_number)
                                                     }
                                                     className="flex-1 py-2 bg-[#EF4444] hover:bg-[#DC2626] rounded-lg text-white font-medium transition"
                                                 >
