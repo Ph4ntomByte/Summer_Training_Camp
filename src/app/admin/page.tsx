@@ -136,7 +136,7 @@ export default function AdminPage() {
                                     <div className="mt-2 h-2 bg-white/20 rounded-full overflow-hidden">
                                         <div
                                             className="h-full bg-[#10B981] transition-all"
-                                            style={{ width: `${(team.current_step / 2) * 100}%` }}
+                                            style={{ width: `${(team.current_step / 5) * 100}%` }}
                                         />
                                     </div>
                                 </div>
