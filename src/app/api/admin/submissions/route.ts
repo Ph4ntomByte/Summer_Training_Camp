@@ -22,9 +22,9 @@ export async function POST(request: Request) {
             );
         }
 
-        const { team, hintNumber, action } = await request.json();
+        const { team, hint_number, action } = await request.json();
 
-        if (!team || hintNumber === undefined || !action) {
+        if (!team || hint_number === undefined || !action) {
             return NextResponse.json(
                 { error: 'Missing required fields' },
                 { status: 400 }
@@ -34,19 +34,13 @@ export async function POST(request: Request) {
         if (action === 'approve') {
             await query(
                 'UPDATE submissions SET status = $1 WHERE team = $2 AND hint_number = $3',
-                ['approved', team, hintNumber]
+                ['approved', team, hint_number]
             );
 
-            await query(
-                `UPDATE team_progress 
-                 SET current_step = $1
-                 WHERE team = $3`,
-                [hintNumber + 1, team]
-            );
         } else if (action === 'reject') {
             await query(
                 'UPDATE submissions SET status = $1 WHERE team = $2 AND hint_number = $3',
-                ['rejected', team, hintNumber]
+                ['rejected', team, hint_number]
             );
         } else {
             return NextResponse.json(
