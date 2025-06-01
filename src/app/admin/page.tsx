@@ -163,7 +163,7 @@ export default function AdminPage() {
                                             <div className="relative w-full h-48 mb-2 rounded-lg overflow-hidden">
                                                 <Image
                                                     src={submission.image_url}
-                                                    alt={`Submission for hint ${submission.hint_number + 1}`}
+                                                    alt={`Submission for hint ${submission.hint_number}`}
                                                     fill
                                                     className="object-cover"
                                                 />
