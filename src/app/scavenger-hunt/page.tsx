@@ -189,8 +189,14 @@ export default function ScavengerHuntPage() {
                       className="sr-only"
                       onChange={(e) => {
                         const f = e.target.files?.[0] ?? null;
-                        setFile(f);
-                        setPreview(f ? URL.createObjectURL(f) : '');
+                        if (f && f.type.startsWith('image/')) {
+                          setFile(f);
+                          setPreview(URL.createObjectURL(f));
+                        } else {
+                          setFile(null);
+                          setPreview('');
+                          console.error('Invalid file type. Please upload an image.');
+                        }
                       }}
                     />
                   </div>
