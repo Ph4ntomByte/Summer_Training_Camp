@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 'use client';
 import React, { useState, useRef, FormEvent, useEffect } from 'react';
 import { SectionHeading } from '@/components/SectionHeading/SectionHeading';

@@ -9,13 +9,11 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: 'Team is required' }, { status: 400 })
     }
 
-    // Look up current_step for this team
     const rows = await query<{ current_step: number }>(
       'SELECT current_step FROM team_progress WHERE team = $1',
       [team]
     )
 
-    // If no row exists yet, insert it with current_step = 0
     if (rows.length === 0) {
       await query(
         'INSERT INTO team_progress (team, current_step) VALUES ($1, 0)',
@@ -48,7 +46,6 @@ export async function POST(request: Request) {
       )
     }
 
-    // Upsert: if row exists, overwrite current_step; otherwise, insert new
     await query(
       `INSERT INTO team_progress (team, current_step)
          VALUES ($1, $2)
