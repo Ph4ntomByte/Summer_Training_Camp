@@ -1,6 +1,7 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 'use client';
 import React, { useState, useRef, FormEvent, useEffect } from 'react';
+import DOMPurify from 'dompurify';
 import { SectionHeading } from '@/components/SectionHeading/SectionHeading';
 import { useRouter } from 'next/navigation';
 
@@ -176,7 +177,7 @@ export default function ScavengerHuntPage() {
                         ${submitting ? 'opacity-60 pointer-events-none' : ''}`}
                     >
                       {preview ? (
-                        <img src={preview} className="max-h-full object-contain" />
+                        <img src={preview} alt="Uploaded preview" className="max-h-full object-contain" />
                       ) : (
                         <span className="text-white/80">Click or drag file here</span>
                       )}
@@ -191,7 +192,8 @@ export default function ScavengerHuntPage() {
                         const f = e.target.files?.[0] ?? null;
                         if (f && f.type.startsWith('image/')) {
                           setFile(f);
-                          setPreview(URL.createObjectURL(f));
+                          const sanitizedPreview = DOMPurify.sanitize(URL.createObjectURL(f));
+                          setPreview(sanitizedPreview);
                         } else {
                           setFile(null);
                           setPreview('');
