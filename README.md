@@ -89,3 +89,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 ## 📄 License
 
 This project is released under the [MIT License](LICENSE).
+
+---
+
+![Alt](https://repobeats.axiom.co/api/embed/ba947b33d9ae2293a7010b649ad961d9fabedcf3.svg "Repobeats analytics image")
