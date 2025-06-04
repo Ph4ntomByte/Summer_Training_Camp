@@ -120,17 +120,6 @@ export default function ScavengerHuntPage() {
     }
   }
 
-  if (!team || hints.length === 0) {
-    return (
-      <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32] text-white py-20">
-        <div className="max-w-xl mx-auto px-6 space-y-8">
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-xl space-y-6 text-center">
-            <p>Loading...</p>
-          </div>
-        </div>
-      </main>
-    );
-  }
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32] text-white py-20">
