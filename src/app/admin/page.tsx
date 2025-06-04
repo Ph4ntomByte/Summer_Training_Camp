@@ -1,5 +1,4 @@
 'use client'
-
 import React, { useState, useEffect } from 'react'
 import { SectionHeading } from '@/components/SectionHeading/SectionHeading'
 import { useRouter } from 'next/navigation'
@@ -29,80 +28,44 @@ export default function AdminPage() {
       setTeams(data.teams || [])
     } catch {
       setTeams([])
+    }
+  }
+
+  async function checkAuthAndLoad() {
+    setLoading(true)
+    try {
+      const res = await fetch('/api/auth', { credentials: 'include' })
+      if (res.status === 401 || res.status === 403) {
+        document.cookie = 'session=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
+        router.replace('/login')
+        return
+      }
+      if (!res.ok) {
+        router.replace('/login')
+        return
+      }
+      const data = await res.json()
+      if (!data.authenticated || data.user.role !== 'admin') {
+        router.replace('/login')
+        return
+      }
+      await fetchTeams()
+    } catch {
+      router.replace('/login')
+      return
     } finally {
       setLoading(false)
     }
   }
 
   useEffect(() => {
-    let didCancel = false
-
-    async function fetchWithTimeout(resource: string, options: RequestInit & { timeout?: number } = {}) {
-      const { timeout = 5000, ...fetchOptions } = options
-      const controller = new AbortController()
-      const id = setTimeout(() => controller.abort(), timeout)
-      try {
-        const response = await fetch(resource, {
-          ...fetchOptions,
-          signal: controller.signal,
-          credentials: 'include',
-        })
-        clearTimeout(id)
-        return response
-      } catch (err) {
-        clearTimeout(id)
-        throw err
-      }
-    }
-
-    async function checkAuth() {
-      try {
-        const res = await fetchWithTimeout('/api/auth', { timeout: 5000 })
-        if (res.status === 401 || res.status === 403) {
-          if (!didCancel) {
-            document.cookie = 'session=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
-            router.replace('/login')
-          }
-          return
-        }
-        if (!res.ok) {
-          if (!didCancel) {
-            router.replace('/login')
-          }
-          return
-        }
-        const data = await res.json()
-        if (!data.authenticated || data.user.role !== 'admin') {
-          if (!didCancel) {
-            router.replace('/login')
-          }
-          return
-        }
-        if (!didCancel) {
-          await fetchTeams()
-        }
-      } catch {
-        if (!didCancel) {
-          router.replace('/login')
-        }
-      } finally {
-        if (!didCancel) {
-          setLoading(false)
-        }
-      }
-    }
-
-    checkAuth()
-
-    return () => {
-      didCancel = true
-    }
+    checkAuthAndLoad()
   }, [router])
 
   async function handleLogout() {
     try {
-      const response = await fetch('/api/auth/logout', {
-        method: 'POST',
+      const response = await fetch('/api/auth', {
+        method: 'DELETE',
         credentials: 'include',
       })
       if (response.ok) {
@@ -116,9 +79,10 @@ export default function AdminPage() {
       await fetch('/api/admin/submissions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ team, hint_number, action: 'approve' }),
       })
-      fetchTeams()
+      await fetchTeams()
     } catch {}
   }
 
@@ -127,9 +91,10 @@ export default function AdminPage() {
       await fetch('/api/admin/submissions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ team, hint_number, action: 'reject' }),
       })
-      fetchTeams()
+      await fetchTeams()
     } catch {}
   }
 
@@ -166,18 +131,24 @@ export default function AdminPage() {
                 <div
                   key={team.team}
                   className={`p-4 rounded-lg cursor-pointer transition-colors ${
-                    selectedTeam === team.team ? 'bg-white/20' : 'bg-white/5 hover:bg-white/10'
+                    selectedTeam === team.team
+                      ? 'bg-white/20'
+                      : 'bg-white/5 hover:bg-white/10'
                   }`}
                   onClick={() => setSelectedTeam(team.team)}
                 >
                   <div className="flex justify-between items-center">
                     <span className="font-medium">{team.team}</span>
-                    <span className="text-sm text-white/70">Step {team.current_step}</span>
+                    <span className="text-sm text-white/70">
+                      Step {team.current_step}
+                    </span>
                   </div>
                   <div className="mt-2 h-2 bg-white/20 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-[#10B981] transition-all"
-                      style={{ width: `${(team.current_step / 5) * 100}%` }}
+                      style={{
+                        width: `${(team.current_step / 5) * 100}%`,
+                      }}
                     />
                   </div>
                 </div>
@@ -187,18 +158,27 @@ export default function AdminPage() {
 
           <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-xl">
             <h2 className="text-xl font-bold mb-4">
-              {selectedTeam ? `${selectedTeam} Submissions` : 'Select a Team'}
+              {selectedTeam
+                ? `${selectedTeam} Submissions`
+                : 'Select a Team'}
             </h2>
             {selectedTeam && (
               <div className="space-y-4">
                 {teams
                   .find((t) => t.team === selectedTeam)
                   ?.submissions?.map((submission) => (
-                    <div key={submission.created_at} className="bg-white/5 rounded-lg p-4">
+                    <div
+                      key={submission.created_at}
+                      className="bg-white/5 rounded-lg p-4"
+                    >
                       <div className="flex justify-between items-start mb-2">
-                        <span className="font-medium">Hint #{submission.hint_number}</span>
+                        <span className="font-medium">
+                          Hint #{submission.hint_number}
+                        </span>
                         <span className="text-sm text-white/70">
-                          {new Date(submission.created_at).toLocaleString()}
+                          {new Date(
+                            submission.created_at
+                          ).toLocaleString()}
                         </span>
                       </div>
                       <div className="relative w-full h-48 mb-2 rounded-lg overflow-hidden">
@@ -211,13 +191,23 @@ export default function AdminPage() {
                       </div>
                       <div className="flex gap-2">
                         <button
-                          onClick={() => handleApproveSubmission(selectedTeam, submission.hint_number)}
+                          onClick={() =>
+                            handleApproveSubmission(
+                              selectedTeam,
+                              submission.hint_number
+                            )
+                          }
                           className="flex-1 py-2 bg-[#10B981] hover:bg-[#0f9f76] rounded-lg text-white font-medium transition"
                         >
                           Approve
                         </button>
                         <button
-                          onClick={() => handleRejectSubmission(selectedTeam, submission.hint_number)}
+                          onClick={() =>
+                            handleRejectSubmission(
+                              selectedTeam,
+                              submission.hint_number
+                            )
+                          }
                           className="flex-1 py-2 bg-[#EF4444] hover:bg-[#DC2626] rounded-lg text-white font-medium transition"
                         >
                           Reject
