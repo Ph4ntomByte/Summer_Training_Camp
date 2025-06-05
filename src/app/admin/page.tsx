@@ -1,3 +1,4 @@
+/*eslint no-unused-vars: "error"*/
 'use client'
 import React, { useState, useEffect } from 'react'
 import { SectionHeading } from '@/components/SectionHeading/SectionHeading'
@@ -16,14 +17,16 @@ interface TeamProgress {
 
 export default function AdminPage() {
   const [teams, setTeams] = useState<TeamProgress[]>([])
-  const [loading, setLoading] = useState(true)
   const [selectedTeam, setSelectedTeam] = useState<string | null>(null)
   const router = useRouter()
 
   async function fetchTeams() {
     try {
-      const res = await fetch('/api/admin/teams', { credentials: 'include' })
-      if (!res.ok) throw new Error()
+      const res = await fetch('/api/admin/teams', {
+        credentials: 'include',
+        cache: 'no-store',
+      })
+      if (!res.ok) throw new Error('Failed to fetch teams')
       const data = await res.json()
       setTeams(data.teams || [])
     } catch {
@@ -32,18 +35,11 @@ export default function AdminPage() {
   }
 
   async function checkAuthAndLoad() {
-    setLoading(true)
     try {
-      const res = await fetch('/api/auth', { credentials: 'include' })
-      if (res.status === 401 || res.status === 403) {
-        document.cookie = 'session=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
-        router.replace('/login')
-        return
-      }
-      if (!res.ok) {
-        router.replace('/login')
-        return
-      }
+      const res = await fetch('/api/auth', {
+        credentials: 'include',
+        cache: 'no-store',
+      })
       const data = await res.json()
       if (!data.authenticated || data.user.role !== 'admin') {
         router.replace('/login')
@@ -52,21 +48,37 @@ export default function AdminPage() {
       await fetchTeams()
     } catch {
       router.replace('/login')
-      return
-    } finally {
-      setLoading(false)
     }
   }
 
   useEffect(() => {
     checkAuthAndLoad()
-  }, [router])
+  }, [])
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      checkAuthAndLoad()
+    }
+
+    window.addEventListener('popstate', handleRouteChange)
+    const originalPushState = window.history.pushState
+    window.history.pushState = function(...args: Parameters<typeof window.history.pushState>) {
+      originalPushState.apply(this, args)
+      handleRouteChange()
+    }
+
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange)
+      window.history.pushState = originalPushState
+    }
+  }, [])
 
   async function handleLogout() {
     try {
       const response = await fetch('/api/auth', {
         method: 'DELETE',
         credentials: 'include',
+        cache: 'no-store',
       })
       if (response.ok) {
         router.replace('/login')
@@ -80,6 +92,7 @@ export default function AdminPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
+        cache: 'no-store',
         body: JSON.stringify({ team, hint_number, action: 'approve' }),
       })
       await fetchTeams()
@@ -92,22 +105,11 @@ export default function AdminPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
+        cache: 'no-store',
         body: JSON.stringify({ team, hint_number, action: 'reject' }),
       })
       await fetchTeams()
     } catch {}
-  }
-
-  if (loading) {
-    return (
-      <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32] text-white py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-xl text-center">
-            <p>Loading...</p>
-          </div>
-        </div>
-      </main>
-    )
   }
 
   return (

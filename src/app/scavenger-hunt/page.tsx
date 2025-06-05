@@ -1,4 +1,3 @@
-/* eslint-disable  @typescript-eslint/no-explicit-any */
 'use client';
 import React, { useState, useRef, FormEvent, useEffect } from 'react';
 import DOMPurify from 'dompurify';
@@ -20,30 +19,50 @@ export default function ScavengerHuntPage() {
   useEffect(() => {
     async function checkAuthAndLoad() {
       try {
-        const res = await fetch('/api/auth', { credentials: 'include' });
+        const res = await fetch('/api/auth', { 
+          credentials: 'include',
+          cache: 'no-store'
+        });
         const data = await res.json();
         if (!data.authenticated) {
           router.push('/login');
           return;
         }
+        if (data.user.role === 'admin') {
+          router.replace('/admin');
+          return;
+        }
         setTeam(data.user.team);
-        const progressRes = await fetch(`/api/hunt/progress?team=${data.user.team}`);
+        const progressRes = await fetch(`/api/hunt/progress?team=${data.user.team}`, {
+          cache: 'no-store'
+        });
         const progressData = await progressRes.json();
         if (typeof progressData.currentStep === 'number') {
           setStep(progressData.currentStep);
         }
-        const hintsRes = await fetch('/api/hunt/hints');
+        const hintsRes = await fetch('/api/hunt/hints', {
+          cache: 'no-store'
+        });
         const hintsData = await hintsRes.json();
         if (Array.isArray(hintsData.hints)) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           setHints(hintsData.hints.map((h: any) => h.text));
         }
-      } catch (error) {
-        console.error('Auth & hints load failed:', error);
+      } catch {
         router.push('/login');
       }
     }
     checkAuthAndLoad();
-  }, [router]);
+
+    const handleRouteChange = () => {
+      checkAuthAndLoad();
+    };
+
+    window.addEventListener('popstate', handleRouteChange);
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange);
+    };
+  }, []);
 
   function resetForm() {
     setFile(null);
@@ -66,12 +85,8 @@ export default function ScavengerHuntPage() {
         setSubmitting(false);
         setShowCongrats(false);
         router.replace('/login');
-      } else {
-        console.error('Logout failed:', await response.text());
       }
-    } catch (error) {
-      console.error('Logout error:', error);
-    }
+    } catch {}
   }
 
   async function handleSubmit(e: FormEvent) {
@@ -103,8 +118,7 @@ export default function ScavengerHuntPage() {
         }),
       });
       setShowCongrats(true);
-    } catch (error) {
-      console.error('Submission error:', error);
+    } catch {
       setSubmitting(false);
       if (barRef.current) barRef.current.style.width = '0%';
     }
@@ -119,7 +133,6 @@ export default function ScavengerHuntPage() {
       setStep(hints.length);
     }
   }
-
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32] text-white py-20">
@@ -186,7 +199,6 @@ export default function ScavengerHuntPage() {
                         } else {
                           setFile(null);
                           setPreview('');
-                          console.error('Invalid file type. Please upload an image.');
                         }
                       }}
                     />
