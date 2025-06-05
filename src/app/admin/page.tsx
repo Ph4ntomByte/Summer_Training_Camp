@@ -75,8 +75,8 @@ export default function AdminPage() {
 
   async function handleLogout() {
     try {
-      const response = await fetch('/api/auth', {
-        method: 'DELETE',
+      const response = await fetch('/api/auth/logout', {
+        method: 'POST',
         credentials: 'include',
         cache: 'no-store',
       })
