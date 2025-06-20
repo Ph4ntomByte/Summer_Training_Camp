@@ -1,5 +1,5 @@
 import React from 'react';
-import { SectionHeading } from '@/components/SectionHeading/SectionHeading'
+// import { SectionHeading } from '@/components/SectionHeading/SectionHeading'
 
 export default function VenuePage() {
   return (
@@ -9,13 +9,13 @@ export default function VenuePage() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold text-white mb-4">Venue &amp; Logistics</h1>
           <p className="text-lg text-white/90 max-w-2xl mx-auto">
-            We will be picking you up from the appointed location and bringing you straight to our camp venue.
-            Stay tuned for the exact pickup locations and schedule!
+            The exact pickup point hasn’t been finalized yet, but we plan to choose a central location in Baku. After the session, we will bring everyone back to that same spot.
           </p>
         </div>
       </section>
-      {/* Location */}
-      <section className="py-16">
+
+      {/*Pick up Location */}
+      {/* <section className="py-16">
         <div className="container mx-auto px-4">
           <SectionHeading>Location &amp; Directions</SectionHeading>
           <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
@@ -27,7 +27,7 @@ export default function VenuePage() {
                 className="w-full h-full border-0"
               />
             </div>
-            {/* Address */}
+
             <div className="space-y-4 lg:col-span-1">
               <h3 className="text-xl font-semibold">Camp Venue Address</h3>
               <p className="text-white/90">
@@ -35,21 +35,21 @@ export default function VenuePage() {
                 123 Street <br />
                 Baku, Azerbaijan
               </p>
-              {/* <a
+              <a
                 href="https://maps.google.com/?q=123+Training+Road+Baku"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block mt-4 text-sm font-medium underline hover:text-white"
               >
                 Open in Google Maps
-              </a> */}
+              </a>
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Venue Details */}
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="container mx-auto px-4">
           <SectionHeading>Venue Details</SectionHeading>
           <p className="text-lg text-white/90 max-w-3xl mx-auto mb-8 text-center">
@@ -67,7 +67,7 @@ export default function VenuePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
     </main>
   );
