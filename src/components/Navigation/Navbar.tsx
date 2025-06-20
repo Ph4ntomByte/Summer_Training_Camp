@@ -13,7 +13,7 @@ export default function Navbar() {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
     { href: '/program', label: 'Program' },
-    { href: '/venue', label: 'Venue' },
+    // { href: '/venue', label: 'Venue' },
     // { href: '/scavenger-hunt', label: 'Scavenger Hunt' },
     // { href: '/past-camps', label: 'Past Camps' },
     { href: '/faq', label: 'FAQ' }
