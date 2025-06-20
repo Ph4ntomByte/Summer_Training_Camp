@@ -15,16 +15,21 @@ export default function FAQPage() {
               <div className="space-y-4 text-white/90">
                 <p>The application process for the EYP Summer Training Camp consists of the following steps:</p>
                 <ol className="list-decimal pl-6 space-y-2">
-                  <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdJWQ-NIDmaYDLFJCfCWo0MyEDHJxLRIzvIPw8p20DeyksdCA/viewform?usp=header">Complete the online application form</Link>
-                  <li>Complete the online application form</li>
+                  <li>
+                    <Link
+                      href="https://docs.google.com/forms/d/e/1FAIpQLSdJWQ-NIDmaYDLFJCfCWo0MyEDHJxLRIzvIPw8p20DeyksdCA/viewform?usp=header"
+                      className="text-current hover:underline"
+                    >
+                      Complete the online application form
+                    </Link>
+                  </li>
                   <li>Receive invitation for the interview</li>
                   <li>Get acceptance email</li>
-                  <li>Confrim participation</li>
+                  <li>Confirm participation</li>
                   <li>Pay the participation fee</li>
                   <li>Sign and send Code of Conduct</li>
                   <li>Complete registration form and medical sheet</li>
                 </ol>
-                <p className="mt-4">Application deadlines and specific requirements will be announced soon.</p>
               </div>
             </section>
 
@@ -50,7 +55,7 @@ export default function FAQPage() {
             <section className="mb-12">
               <h2 className="text-2xl font-semibold mb-4 text-white">Dress Code</h2>
               <div className="space-y-4 text-white/90">
-                <p>At the Camp, we do not have Dress Code but we recoomend to take with you:</p>
+                <p>At the Camp, we do not have Dress Code but we recommend to take with you:</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Comfortable casual wear for evening activities and free time</li>
                   <li>Appropriate footwear for both indoor and outdoor activities</li>
