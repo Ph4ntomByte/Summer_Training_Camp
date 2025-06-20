@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link'
 
 export default function FAQPage() {
   return (
@@ -7,17 +8,23 @@ export default function FAQPage() {
         <div className="max-w-4xl mx-auto">
           <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg border-2 border-white/20">
             <h1 className="text-4xl font-bold mb-8 text-white text-center">Frequently Asked Questions</h1>
-            
-            {/* Dress Code Section */}
+
+            {/* Application Process Section */}
             <section className="mb-12">
-              <h2 className="text-2xl font-semibold mb-4 text-white">Dress Code</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-white">How to Apply</h2>
               <div className="space-y-4 text-white/90">
-                <p>At the Camp, we do not have Dress Code but we recoomend to take with you:</p>
-                <ul className="list-disc pl-6 space-y-2">
-                  <li>Comfortable casual wear for evening activities and free time</li>
-                  <li>Appropriate footwear for both indoor and outdoor activities</li>
-                  <li>Warm clothes since it might get cold at nights</li>
-                </ul>
+                <p>The application process for the EYP Summer Training Camp consists of the following steps:</p>
+                <ol className="list-decimal pl-6 space-y-2">
+                  <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdJWQ-NIDmaYDLFJCfCWo0MyEDHJxLRIzvIPw8p20DeyksdCA/viewform?usp=header">Complete the online application form</Link>
+                  <li>Complete the online application form</li>
+                  <li>Receive invitation for the interview</li>
+                  <li>Get acceptance email</li>
+                  <li>Confrim participation</li>
+                  <li>Pay the participation fee</li>
+                  <li>Sign and send Code of Conduct</li>
+                  <li>Complete registration form and medical sheet</li>
+                </ol>
+                <p className="mt-4">Application deadlines and specific requirements will be announced soon.</p>
               </div>
             </section>
 
@@ -39,20 +46,16 @@ export default function FAQPage() {
               </div>
             </section>
 
-            {/* Application Process Section */}
+            {/* Dress Code Section */}
             <section className="mb-12">
-              <h2 className="text-2xl font-semibold mb-4 text-white">How to Apply</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-white">Dress Code</h2>
               <div className="space-y-4 text-white/90">
-                <p>The application process for the EYP Summer Training Camp consists of the following steps:</p>
-                <ol className="list-decimal pl-6 space-y-2">
-                  <li>Complete the online application form</li>
-                  <li>Receive acceptance email</li>
-                  <li>Confrim participation</li>
-                  <li>Pay the participation fee</li>
-                  <li>Sign and send Code of Conduct</li>
-                  <li>Complete registration form and medical sheet</li>
-                </ol>
-                <p className="mt-4">Application deadlines and specific requirements will be announced soon.</p>
+                <p>At the Camp, we do not have Dress Code but we recoomend to take with you:</p>
+                <ul className="list-disc pl-6 space-y-2">
+                  <li>Comfortable casual wear for evening activities and free time</li>
+                  <li>Appropriate footwear for both indoor and outdoor activities</li>
+                  <li>Warm clothes since it might get cold at nights</li>
+                </ul>
               </div>
             </section>
 

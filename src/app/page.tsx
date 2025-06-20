@@ -78,7 +78,7 @@ export default function Home() {
             <CountdownTimer />
           </div>
           <a
-            href="https://drive.google.com/open?id=1wRedQuHMCdcRu7QYSWPB0yxcszdcY5tlXQOS9rFIZ2Y&usp=drive_copy"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdJWQ-NIDmaYDLFJCfCWo0MyEDHJxLRIzvIPw8p20DeyksdCA/viewform?usp=header"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-8 py-3 bg-gradient-to-r from-[#E91E63] to-[#C2185B] text-white font-semibold rounded-lg transition-all duration-300 shadow-lg"
