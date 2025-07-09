@@ -29,7 +29,7 @@ export default function VenuePage() {
               <h3 className="text-xl font-semibold">Pick-Up Location</h3>
               <p className="text-white/90">
                 <br />
-                In front of Ganclik mall <br />
+                Parking in front of Ganclik Mall <br />
               </p>
               <a
                 href="https://maps.google.com/?q=123+Training+Road+Baku"
@@ -44,30 +44,29 @@ export default function VenuePage() {
         </div>
       </section>
 
-      {/* Venue Details */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <SectionHeading>Venue Details</SectionHeading>
-          <p className="text-lg text-white/90 max-w-3xl mx-auto mb-8 text-center">
-            Get a glimpse of the facilities where our camp will take place.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {venueImages.map(({ src, alt }, i) => (
-              <div
-                key={i}
-                className="relative rounded-lg overflow-hidden shadow-lg h-48 bg-white/20"
-              >
-                <Image
-                  src={src}
-                  alt={alt}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            ))}
+      <div className="container mx-auto px-4 py-12">
+        <div className="max-w-4xl mx-auto">
+
+          <h1 className="text-4xl font-bold mb-8 text-white text-center">Venue Images</h1>
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {venueImages.map(({ src, alt }, i) => (
+                <div
+                  key={i}
+                  className="relative rounded-lg overflow-hidden shadow-lg h-48 bg-white/20"
+                >
+                  <Image
+                    src={src}
+                    alt={alt}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
     </main>
   );

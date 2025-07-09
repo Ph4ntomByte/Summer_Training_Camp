@@ -66,7 +66,6 @@ export default function ProgramPage() {
           </div>
         </div>
       </section>
-
       {/* Workshops Section */}
       {/* <section className="py-16">
         <div className="container mx-auto px-4">

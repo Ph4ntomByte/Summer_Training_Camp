@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { SectionHeading } from '@/components/SectionHeading/SectionHeading'
 import Timeline, { TimelineItem } from '@/components/Timeline/Timeline'
 import CountUp from '@/components/CountUp'
+import { PdfCard } from '@/components/PdfCard/PdfCard'
 
 export default function AboutPage() {
   const eypTimeline: TimelineItem[] = [
@@ -85,7 +86,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <div className="mx-auto h-108 aspect-video">
+      {/* <div className="mx-auto h-108 aspect-video">
         <iframe
           src="https://www.youtube.com/embed/3rAZD_fg4To"
           title="EYP Being EYP"
@@ -94,7 +95,7 @@ export default function AboutPage() {
           allowFullScreen
           className="w-full h-full object-cover"
         />
-      </div>
+      </div> */}
 
       {/* Timeline */}
       <section className="py-16">
@@ -104,6 +105,17 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="py-16">
+          <div className="flex justify-center">
+            <PdfCard
+              title="Welcome Booklet"
+              description="Complete guide with schedules, rules, and tips."
+              pdfUrl="WELCOME_BOOKLET.pdf"
+              thumbnailUrl="image.png"
+            />
+        </div>
+      </section>
+      
       {/* Call to Action */}
       {/* <section className="py-16">
         <div className="container mx-auto px-4 text-center">

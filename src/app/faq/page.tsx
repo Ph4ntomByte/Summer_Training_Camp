@@ -9,31 +9,6 @@ export default function FAQPage() {
           <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg border-2 border-white/20">
             <h1 className="text-4xl font-bold mb-8 text-white text-center">Frequently Asked Questions</h1>
 
-            {/* Application Process Section */}
-            {/* <section className="mb-12">
-              <h2 className="text-2xl font-semibold mb-4 text-white">How to Apply</h2>
-              <div className="space-y-4 text-white/90">
-                <p>The application process for the EYP Summer Training Camp consists of the following steps:</p>
-                <ol className="list-decimal pl-6 space-y-2">
-                  <li>
-                    <Link
-                      href="https://docs.google.com/forms/d/e/1FAIpQLSdJWQ-NIDmaYDLFJCfCWo0MyEDHJxLRIzvIPw8p20DeyksdCA/viewform?usp=header"
-                      className="text-current hover:underline"
-                    >
-                      Complete the online application form
-                    </Link>
-                  </li>
-                  <li>Receive invitation for the interview</li>
-                  <li>Get acceptance email</li>
-                  <li>Confirm participation</li>
-                  <li>Pay the participation fee</li>
-                  <li>Sign and send Code of Conduct</li>
-                  <li>Complete registration form and medical sheet</li>
-                </ol>
-              </div>
-            </section> */}
-
-            {/* What to Bring Section */}
             {/* What to Bring Section */}
             <section className="mb-12">
               <h2 className="text-2xl font-semibold mb-4 text-white">What to Bring</h2>
