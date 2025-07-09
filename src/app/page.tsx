@@ -77,14 +77,14 @@ export default function Home() {
           <div className="flex-shrink-0 h-40 w-full max-w-xs">
             <CountdownTimer />
           </div>
-          <a
+          {/* <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSdJWQ-NIDmaYDLFJCfCWo0MyEDHJxLRIzvIPw8p20DeyksdCA/viewform?usp=header"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-8 py-3 bg-gradient-to-r from-[#E91E63] to-[#C2185B] text-white font-semibold rounded-lg transition-all duration-300 shadow-lg"
           >
             Apply Now
-          </a>
+          </a> */}
         </motion.div>
       </section>
 
