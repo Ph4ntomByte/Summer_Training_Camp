@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link'
+// import Link from 'next/link'
 
 export default function FAQPage() {
   return (
@@ -10,7 +10,7 @@ export default function FAQPage() {
             <h1 className="text-4xl font-bold mb-8 text-white text-center">Frequently Asked Questions</h1>
 
             {/* Application Process Section */}
-            <section className="mb-12">
+            {/* <section className="mb-12">
               <h2 className="text-2xl font-semibold mb-4 text-white">How to Apply</h2>
               <div className="space-y-4 text-white/90">
                 <p>The application process for the EYP Summer Training Camp consists of the following steps:</p>
@@ -31,8 +31,9 @@ export default function FAQPage() {
                   <li>Complete registration form and medical sheet</li>
                 </ol>
               </div>
-            </section>
+            </section> */}
 
+            {/* What to Bring Section */}
             {/* What to Bring Section */}
             <section className="mb-12">
               <h2 className="text-2xl font-semibold mb-4 text-white">What to Bring</h2>
@@ -47,6 +48,28 @@ export default function FAQPage() {
                   <li>Water bottle</li>
                   <li>Any necessary medications</li>
                   <li>Small backpack for daily activities</li>
+                </ul>
+
+                <p>Personal items:</p>
+                <ul className="list-disc pl-6 space-y-2">
+                  <li>Toothbrush, toothpaste, deodorant, shampoo, shower gel, etc.</li>
+                  <li>Sunscreen (it might be very sunny)</li>
+                  <li>Towel and flip-flops or slippers for shower</li>
+                  <li>Hand sanitizer or wet wipes (just in case)</li>
+                  <li>Enough clothes for 3 days (plus one extra set)</li>
+                  <li>Comfortable outfits for daytime activities</li>
+                  <li>Sports shoes (expect lots of movement—don’t bring your best pair)</li>
+                  <li>Light jacket or hoodie (nights can get chilly)</li>
+                  <li>Hat or cap and sunglasses for sun protection</li>
+                  <li>Fully charged power bank</li>
+                  <li>Reusable water bottle</li>
+                </ul>
+
+                <p>Things to do before camp:</p>
+                <ul className="list-disc pl-6 space-y-2">
+                  <li>Charge all your devices</li>
+                  <li>Download music or offline games for the trip and evenings</li>
+                  <li>Bring any personal medications (ESPs provide only basic medical supplies)</li>
                 </ul>
               </div>
             </section>

@@ -27,7 +27,7 @@ export const scheduleData = [
     date: 'July 12, 2025 (GMT+4)',
     activities: [
       { time: '09:30–10:30', title: 'Trainees Arrive', location: 'Campus Entrance' },
-      { time: '10:30–12:30', title: 'Trip to Gobuland', location: 'Coach Departure Point' },
+      { time: '10:30–12:30', title: 'Trip to Gobuland', location: 'Departure Point' },
       { time: '12:30–14:00', title: 'General Teambuilding + Opening Ceremony', location: 'Gobuland' },
       { time: '14:00–15:00', title: 'Lunch Break', location: 'Restaurant' },
       { time: '15:00–17:00', title: 'Training I', location: 'Gobuland' },
@@ -115,7 +115,6 @@ export default function ProgramPage() {
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                       <div>
                         <h4 className="text-xl font-semibold text-white">{activity.title}</h4>
-                        <p className="text-white/80 mt-1">{activity.description}</p>
                         <p className="text-white/60 text-sm">{activity.location}</p>
                       </div>
                       <div className="mt-4 md:mt-0 md:text-right">
@@ -131,7 +130,7 @@ export default function ProgramPage() {
       </section>
 
       {/* Workshops Section */}
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-12 text-center text-white">Featured Workshops</h2>
@@ -164,7 +163,7 @@ export default function ProgramPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </main >
   );
 } 
