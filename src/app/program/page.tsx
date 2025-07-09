@@ -4,69 +4,70 @@ import { SectionHeading } from '@/components/SectionHeading/SectionHeading'
 import { Button } from '@/components/UI/Button'
 import { AnimatePresence, motion } from 'framer-motion'
 
-const scheduleData = [
+export const scheduleData = [
   {
     day: 'Day 0 – CJO Day',
     date: 'July 10, 2025 (GMT+4)',
     activities: [
-      { time: '10:30–11:30', title: 'Officials Registration', description: 'Registration', location: 'Globus Centre' },
-      { time: '11:30–12:00', title: 'General Teambuilding', description: 'Ice-breakers', location: 'Globus Centre' },
-      { time: '12:00–13:30', title: 'Officials Training I', description: ' ', location: 'Globus Centre' },
-      { time: '13:30–14:00', title: 'Coffee break', description: '', location: 'Cafeteria' },
-      { time: '14:00–15:00', title: 'Officials Training II', description: '', location: 'Globus Centre' },
-      { time: '15:00–16:00', title: 'Lunch break', description: '', location: 'Dining Area' },
-      { time: '16:00–17:30', title: 'Officials Training III', description: '', location: 'Globus Centre' },
-      { time: '17:30–18:00', title: 'Coffee break', description: 'Afternoon tea', location: 'Cafeteria' },
-      { time: '18:00–19:00', title: 'Officials Training IV', description: '', location: 'Globus Centre' },
-      { time: '19:00', title: 'Officials Dinner', description: 'Formal dinner', location: 'Globus Centre' },
+      { time: '10:30–11:30', title: 'Officials Registration', location: 'Globus Centre' },
+      { time: '11:30–12:00', title: 'General Teambuilding', location: 'Globus Centre' },
+      { time: '12:00–12:30', title: 'Safe Talk', location: 'Globus Centre' },
+      { time: '12:30–13:30', title: 'Officials Training I', location: 'Globus Centre' },
+      { time: '13:30–14:00', title: 'Coffee Break', location: 'Cafeteria' },
+      { time: '14:00–15:00', title: 'Officials Training II', location: 'Globus Centre' },
+      { time: '15:00–16:00', title: 'Lunch Break', location: 'Dining Area' },
+      { time: '16:00–17:30', title: 'Officials Training III', location: 'Globus Centre' },
+      { time: '17:30–18:00', title: 'Coffee Break', location: 'Cafeteria' },
+      { time: '18:00–19:00', title: 'Officials Training IV', location: 'Globus Centre' },
+      { time: '19:00', title: 'Officials Dinner', location: 'Globus Centre' },
     ],
   },
   {
     day: 'Day 1 – Teambuilding Day',
-    date: 'July 11, 2025 (GMT+4)',
+    date: 'July 12, 2025 (GMT+4)',
     activities: [
-      { time: '07:30–08:00', title: 'Morning activity', description: 'Meditation', location: 'Garden Area' },
-      { time: '09:00–13:00', title: 'Trip to the venue', description: '', location: 'Off-site Venue' },
-      { time: '13:00–14:00', title: 'General Teambuilding', description: 'Outdoor games with organizers', location: 'Outdoor Field' },
-      { time: '14:00–15:00', title: 'Lunch break', description: 'Picnic-style lunch', location: 'Outdoor Dining' },
-      { time: '15:00–16:30', title: 'Training I', description: '', location: 'Workshop Room' },
-      { time: '16:30–17:00', title: 'Coffee break', description: 'Afternoon refreshments', location: 'Cafeteria' },
-      { time: '17:00–18:30', title: 'Training II', description: '', location: 'Conference Room' },
-      { time: '18:30–19:30', title: 'Evening activity', description: 'Campfire & storytelling', location: 'Campfire Circle' },
-      { time: '19:30–20:30', title: 'Dinner', description: '', location: 'Dining Hall' },
-      { time: '20:30–22:30', title: 'Games night', description: '', location: 'Common Room' },
+      { time: '09:30–10:30', title: 'Trainees Arrive', location: 'Campus Entrance' },
+      { time: '10:30–12:30', title: 'Trip to Gobuland', location: 'Departure Point' },
+      { time: '12:30–14:00', title: 'General Teambuilding + Opening Ceremony', location: 'Gobuland' },
+      { time: '14:00–15:00', title: 'Lunch Break', location: 'Restaurant' },
+      { time: '15:00–17:00', title: 'Training I', location: 'Gobuland' },
+      { time: '17:00–17:30', title: 'Coffee Break', location: 'Gobuland' },
+      { time: '17:30–18:30', title: 'Training II', location: 'Gobuland' },
+      { time: '18:30–19:30', title: 'Evening Activity', location: 'Gobuland' },
+      { time: '19:30–20:30', title: 'Dinner', location: 'Restaurant' },
     ],
   },
   {
     day: 'Day 2 – Training Day',
-    date: 'July 12, 2025 (GMT+4)',
+    date: 'July 13, 2025 (GMT+4)',
     activities: [
-      { time: '08:00–08:30', title: 'Morning activity', description: '', location: 'Workshop Room A' },
-      { time: '08:30–09:00', title: 'Breakfast', description: ' ', location: 'Dining Area' },
-      { time: '09:00–10:30', title: 'Training III', description: '', location: 'Conference Room' },
-      { time: '10:30–11:00', title: 'Coffee break', description: 'Mid-morning snacks', location: 'Cafeteria' },
-      { time: '11:00–12:30', title: 'Training IV', description: '', location: 'Workshop Room B' },
-      { time: '12:30–13:30', title: 'Lunch break', description: '', location: 'Dining Area' },
-      { time: '13:30–14:30', title: 'Training V', description: '', location: 'Workshop Room C' },
-      { time: '14:30–15:00', title: 'Break', description: '', location: 'Media Lab' },
-      { time: '15:00–16:30', title: 'Training VI', description: '', location: 'Conference Room' },
-      { time: '16:30–17:00', title: 'Coffee break', description: 'Afternoon tea', location: 'Cafeteria' },
-      { time: '17:00–18:00', title: 'Training VII', description: '', location: 'Workshop Room A' },
-      { time: '18:00–19:00', title: 'Roundtable', description: '', location: 'Main Hall' },
-      { time: '19:00–20:00', title: 'Dinner', description: '', location: 'Dining Hall' },
-      { time: '20:00–22:00', title: 'Closing ceremony', description: 'Farewell', location: 'Main Hall' },
+      { time: '08:00–08:40', title: 'Breakfast', location: 'Dining Area' },
+      { time: '08:40–09:00', title: 'Meditation', location: 'Gobuland' },
+      { time: '09:00–11:00', title: 'Training III', location: 'Gobuland' },
+      { time: '11:00–11:30', title: 'Coffee Break', location: 'Gobuland' },
+      { time: '11:30–13:30', title: 'Training IV', location: 'Gobuland' },
+      { time: '13:30–14:30', title: 'Lunch Break', location: 'Restaurant' },
+      { time: '14:30–15:30', title: 'Training V', location: 'Gobuland' },
+      { time: '15:30–16:00', title: 'Coffee Break', location: 'Gobuland' },
+      { time: '16:00–18:00', title: 'Training VI', location: 'Gobuland' },
+      { time: '18:00–19:00', title: 'Evening Activity', location: 'Gobuland' },
+      { time: '19:00–20:00', title: 'Dinner', location: 'Restaurant' },
+      { time: '20:00–22:00', title: 'Closing Ceremony', location: 'Gobuland' },
     ],
   },
   {
     day: 'Day 3 – Training Day',
-    date: 'July 13, 2025 (GMT+4)',
+    date: 'July 14, 2025 (GMT+4)',
     activities: [
-      { time: '08:30–09:30', title: 'Breakfast', description: 'Final group breakfast', location: 'Dining Area' },
-      { time: '09:30–10:30', title: 'Packing up', description: 'Prepare for departure', location: 'All Areas' },
-      { time: '11:00–14:00', title: 'Trip to Baku', description: 'Return journey', location: 'Baku' },
+      { time: '08:00–08:30', title: 'Morning Activity', location: 'Gobuland' },
+      { time: '08:30–09:30', title: 'Breakfast', location: 'Dining Area' },
+      { time: '09:30–10:30', title: 'Training VII', location: 'Gobuland' },
+      { time: '10:30–11:30', title: 'Packing Up', location: 'Gobuland' },
+      { time: '11:30–14:00', title: 'Trip to Baku', location: 'Coach Departure Point' },
+      { time: '15:30–16:00', title: 'Coffee Break', location: 'Gobuland' },
     ],
   },
-];
+]
 
 export default function ProgramPage() {
   const [dayIndex, setDayIndex] = useState(0)
@@ -114,7 +115,6 @@ export default function ProgramPage() {
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                       <div>
                         <h4 className="text-xl font-semibold text-white">{activity.title}</h4>
-                        <p className="text-white/80 mt-1">{activity.description}</p>
                         <p className="text-white/60 text-sm">{activity.location}</p>
                       </div>
                       <div className="mt-4 md:mt-0 md:text-right">
@@ -130,7 +130,7 @@ export default function ProgramPage() {
       </section>
 
       {/* Workshops Section */}
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-12 text-center text-white">Featured Workshops</h2>
@@ -163,7 +163,7 @@ export default function ProgramPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </main >
   );
 } 

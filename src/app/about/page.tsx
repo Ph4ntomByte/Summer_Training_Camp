@@ -105,7 +105,7 @@ export default function AboutPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4 text-white">Now It&apos;s Your Turn</h2>
           <p className="text-lg text-white/90 mb-6 max-w-2xl mx-auto">
@@ -121,7 +121,7 @@ export default function AboutPage() {
             Apply Now
           </a>
         </div>
-      </section>
+      </section> */}
     </main>
   )
 }
