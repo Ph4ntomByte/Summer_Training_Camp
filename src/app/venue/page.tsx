@@ -1,23 +1,20 @@
 import React from 'react';
-// import { SectionHeading } from '@/components/SectionHeading/SectionHeading'
+import { SectionHeading } from '@/components/SectionHeading/SectionHeading'
+import Image from 'next/image'
 
+const venueImages = [
+  { src: '/venues/gobuland_area.jpeg', alt: 'Grand Hall interior' },
+  { src: '/venues/gobuland_entry.jpeg', alt: 'Outdoor Arena' },
+  { src: '/venues/gobuland_ship.webp', alt: 'Dining Area setup' },
+]
 export default function VenuePage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#2E7D32] via-[#E91E63] to-[#2E7D32] text-white">
-      {/* Hero / Intro */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">Venue &amp; Logistics</h1>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto">
-            The exact pickup point hasn’t been finalized yet, but we plan to choose a central location in Baku. After the session, we will bring everyone back to that same spot.
-          </p>
-        </div>
-      </section>
 
       {/*Pick up Location */}
-      {/* <section className="py-16">
+      <section className="py-16">
         <div className="container mx-auto px-4">
-          <SectionHeading>Location &amp; Directions</SectionHeading>
+          <SectionHeading>Location and Directions</SectionHeading>
           <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             <div className="lg:col-span-2 w-full h-96 rounded-lg overflow-hidden shadow-lg">
               <iframe
@@ -29,11 +26,10 @@ export default function VenuePage() {
             </div>
 
             <div className="space-y-4 lg:col-span-1">
-              <h3 className="text-xl font-semibold">Camp Venue Address</h3>
+              <h3 className="text-xl font-semibold">Pick-Up Location</h3>
               <p className="text-white/90">
-                [Venue Name]<br />
-                123 Street <br />
-                Baku, Azerbaijan
+                <br />
+                In front of Ganclik mall <br />
               </p>
               <a
                 href="https://maps.google.com/?q=123+Training+Road+Baku"
@@ -46,28 +42,32 @@ export default function VenuePage() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Venue Details */}
-      {/* <section className="py-16">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <SectionHeading>Venue Details</SectionHeading>
           <p className="text-lg text-white/90 max-w-3xl mx-auto mb-8 text-center">
             Get a glimpse of the facilities where our camp will take place.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="rounded-lg overflow-hidden shadow-lg h-48 bg-white/20 flex items-center justify-center text-white/50">
-              Image 1 Placeholder
-            </div>
-            <div className="rounded-lg overflow-hidden shadow-lg h-48 bg-white/20 flex items-center justify-center text-white/50">
-              Image 2 Placeholder
-            </div>
-            <div className="rounded-lg overflow-hidden shadow-lg h-48 bg-white/20 flex items-center justify-center text-white/50">
-              Image 3 Placeholder
-            </div>
+            {venueImages.map(({ src, alt }, i) => (
+              <div
+                key={i}
+                className="relative rounded-lg overflow-hidden shadow-lg h-48 bg-white/20"
+              >
+                <Image
+                  src={src}
+                  alt={alt}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
     </main>
   );

@@ -57,8 +57,7 @@ export const scheduleData = [
       { time: '08:30–09:30', title: 'Breakfast', location: 'Dining Area' },
       { time: '09:30–10:30', title: 'Training VII', location: 'Gobuland' },
       { time: '10:30–11:30', title: 'Packing Up', location: 'Gobuland' },
-      { time: '11:30–14:00', title: 'Trip to Baku', location: 'Coach Departure Point' },
-      { time: '15:30–16:00', title: 'Coffee Break', location: 'Gobuland' },
+      { time: '11:30–14:00', title: 'Trip to Baku', location: 'Departure Point' },
     ],
   },
 ]
