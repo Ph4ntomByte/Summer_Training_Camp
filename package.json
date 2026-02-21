@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.820.0",
-    "@aws-sdk/s3-request-presigner": "^3.820.0",
+    "@aws-sdk/client-s3": "^3.995.0",
+    "@aws-sdk/s3-request-presigner": "^3.995.0",
     "@headlessui/react": "^2.2.4",
     "@hono/node-server": "^1.14.3",
     "@neondatabase/serverless": "^0.10.4",
